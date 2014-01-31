@@ -45,3 +45,5 @@ echo "<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www
     </tr>
 </body>
 </html>";
+
+echo "bonjour";
