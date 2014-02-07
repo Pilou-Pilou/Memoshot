@@ -1,0 +1,5 @@
+[connection]
+pass = pa105532
+user = pa105532
+host = linserv1
+base = pa105532
