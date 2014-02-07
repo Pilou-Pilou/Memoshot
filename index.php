@@ -4,6 +4,6 @@
     <title></title>
 </head>
 <body>
-<?php require('./View/loginView.html'); ?>
+<?php require('./View/loginView.php'); ?>
 </body>
 </html>
