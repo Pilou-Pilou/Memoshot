@@ -7,4 +7,4 @@
  */
 
 session_start();
-echo "Bonjour Vous etes Bien Loger " . $_SESSION['pseudo'];
+echo "Bonjour, vous êtes bien connecté " . $_SESSION['pseudo'];
