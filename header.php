@@ -1,47 +1,40 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mathieu
- * Date: 14-01-31
- * Time: 08:50
- */
-echo "<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-<title> Premiere page de Memoshot</title>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://www.locavenue.fr/js/bootstrap.js"></script>
+
 </head>
 <body>
-<h1>Memoshot Sommaire</h1>
- <tr>
-        <a href='./lab1b.php'>Lab1b</br></a></td>
-    </tr>
-    <tr>
-    <a href='./lab1c.php'>Lab1c</br></a></div></td>
-    </tr>
-    <tr>
-    <a href='./date.php'>Afficher la date</br></a></div></td>
-    </tr>
-    <tr>
-    <a href='./include.php'>Inclure le contenu d'un fichier dans une page HTML</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./derModif.php'>Afficher la date de dernière modification du fichier</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./adrClient.php'>Afficher l'adresse IP du client</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./ie.php'>Afficher un petit message malin lorsque le navigateur est Internet Explorer</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./url.php'>Récupérer à partir d'un fichier texte 5 URLs et les rendre cliquables dans une page HTML</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./visiteurs.php'>Visiteurs</br></a></div></td>
-    </tr>
-    <tr>
-        <a href='./popup.php'>popup</br></a></div></td>
-    </tr>
+
+
+<nav style="background-color: #6ad43e " class="navbar navbar-inverse" role="navigation">
+    <div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <a class="navbar-brand" href="../view/accueilView.php">Memoshot </a>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parametre <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Modifier le compte</a></li>
+                        <li><a href="#">S'abonner </a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <input type="button" class="btn btn-danger" value=" Se Deconnecter " onclick="location.href='../'">
+        </div>
+
+
+    </div>
+</nav>
+
+
 </body>
-</html>";
+</html>

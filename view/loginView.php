@@ -9,12 +9,24 @@
     <link rel="stylesheet" href="./css/bootstrap.css"/>
     <?php
     session_start();
-    //compteur
-    if (!isset($_GET['compteur'])) {
-        $_SESSION['compteur'] = 1;
-    } else {
-        $_SESSION['compteur']++;
+
+    $action = 0;
+
+    if (isset($_SESSION['erreur'])) {
+        switch ($_SESSION['erreur']) {
+            case -1 :
+                $action = 1;
+                break;
+            case 1 :
+                $action = 2;
+                break;
+            case 2 :
+                $action = 3;
+                break;
+
+        }
     }
+
     ?>
 </head>
 
@@ -29,25 +41,35 @@
         <div class="content"><h1 align="center">Login</h1><br>
 
             <?php
-            if ($_SESSION['compteur'] > 1)
+
+            if ($action == 2)
                 echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre identifiant n'existe pas ou il y a une erreur dans votre identifiant et/ou mot de passe </p>";
+            else {
+                if ($action == 1)
+                    echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Vos venez de vous inscrire pour finaliser l'inscription valider le mail qui va vous étres envoyer dans les 24 heures </p>";
+                else {
+                    if ($action == 3)
+                        echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre compte n'est pas encore valider allez dans votre boite mail confirmer votre inscription </p>";
+                }
+            }
+
             ?>
 
 
             <form id="form1" name="form1" method="post" action="./Controller/loginController.php">
                 <div align="center">
                     <p align="center" style="width:300px">
-                        <?php  if ($_SESSION['compteur'] <= 1)
+                        <?php  if ($action != 2)
                             echo "<input  class=\"form-control\" name=\"pseudo\" type=\"text\" id=\"pseudo\" placeholder=\"pseudo\" size=\"18\" maxlength=\"18\" />";
                         else
                             echo "<div class=\"form-group has-error has-feedback\" style=\"width:300px\"><input  class=\"form-control\" name=\"pseudo\" type=\"text\" id=\"pseudo\" placeholder=\"pseudo\" size=\"18\" maxlength=\"18\" /></div>";
                         ?>
                     </p>
                     &nbsp;<p align="center" style="width:300px">
-                    <?php  if ($_SESSION['compteur'] <= 1)
-                        echo "<input  class=\"form-control\" name=\"password\" type=\"text\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" />";
+                    <?php  if ($action != 2)
+                        echo "<input  class=\"form-control\" name=\"password\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" />";
                     else
-                        echo "<div class=\"form-group has-error has-feedback\" style=\"width:300px\"><input  class=\"form-control\" name=\"password\" type=\"text\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" /></div>";
+                        echo "<div class=\"form-group has-error has-feedback\" style=\"width:300px\"><input  class=\"form-control\" name=\"password\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" /></div>";
                     ?></div>
                 </p>
 
@@ -57,7 +79,7 @@
 
                 <p align="center">
                     <input class="btn btn-primary" type="button" name="CreerCompte" id="CreerCompte"
-                           value="Creer un Compte" onclick="javascript:location.href='./View/inscriptionView.php'"/>
+                           value="Creer un Compte" onclick="location.href='./view/creationCompteView.php'"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input class="btn btn-primary" name="Connexion" id="Connexion" type="submit" value="Valider"/>
                 </p>
@@ -74,3 +96,6 @@
 
 </body>
 </html>
+<?php
+
+session_destroy();
