@@ -95,8 +95,8 @@ function mailEnvoi($mail, $id)
                         <p style="text-align: center;"><span style="font-family:courier new,courier,monospace">F&eacute;licitation vous venez de vous inscrire sur notre site memoshot.<br />
                         Pour finaliser cette inscription cliquez sur le lien ci dessous :</span></p>
 
-                        <p style="text-align: center;"><a href="http://www.locavenue.fr/view/validationCompteView?id=' . $id . '">Valider votre inscription</a><br />
-                        <img src="http://www.locavenue.fr/images/logo.png" /></p>
+                        <p style="text-align: center;"><a href="http://205.236.12.51/projet/h2014/equipe3/view/validationCompteView?id=' . $id . '">Valider votre inscription</a><br />
+                        <img src="http://205.236.12.51/projet/h2014/equipe3/images/logo.png" /></p>
 
                         <p style="text-align: center;">Pour tout renseignement contacter l&#39;&eacute;quipe de memoshot à l&#39;adresse suivante :</p>
 
@@ -229,7 +229,7 @@ function imageValide($photosize, $photoname)
 // fonction qui envoi l'image sur le serveur
 function envoiImage($photosize, $photoname)
 {
-    $dossier = 'ftp://locavenul:v5pA4PEm@ftp.locavenue.fr/upload/';
+    $dossier = 'http://205.236.12.51/projet/h2014/equipe3/upload/';
     $extension = strrchr($photoname, '.');
 
     $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
