@@ -16,17 +16,26 @@ $idUser = htmlspecialchars($_POST['pseudo'], ENT_QUOTES);
 $mdp = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
 // Recherche de l'utilisateur dans la base
-$req = mysql_query('SELECT * FROM `users` WHERE pseudo =\'' . $idUser . '\' AND password =\'' . $mdp . '\'')
+$req = mysql_query('SELECT * FROM `users` WHERE pseudo =\'' . $idUser . '\' AND password =SHA1(\'' . $mdp . '\') and status="V"')
 or die ("Impossible de se connecté à la table 'users'" . mysql_error());
 
-$row = mysql_fetch_array($req);
+
 $row2 = mysql_fetch_array($req2);
+$row = mysql_fetch_array($req);
 
 if (mysql_num_rows($req) == 1) {
     $_SESSION['pseudo'] = $row['pseudo'];
-    header('Location: ../View/accueilView.php');
-} else
-    header('Location: ../index.php?compteur=$_SESSION[\'pseudo\']');
+    header('Location: ../view/accueilView.php');
+} else {
+    // Recherche de l'utilisateur dans la base
+    $req = mysql_query('SELECT * FROM `users` WHERE pseudo =\'' . $idUser . '\' AND password =\'' . $mdp . '\' and status="A"')
+    or die ("Impossible de se connecté à la table 'users'" . mysql_error());
+    if (mysql_num_rows($req) == 1)
+        $_SESSION['erreur'] = 2;
+    else
+        $_SESSION['erreur'] = 1;
+    header('Location: ../index.php');
+}
 
 // fermeture de la connexions
 $conexions->deconnexions();
