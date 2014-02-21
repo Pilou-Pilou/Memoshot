@@ -67,9 +67,9 @@
                     </p>
                     &nbsp;<p align="center" style="width:300px">
                     <?php  if ($action != 2)
-                        echo "<input  class=\"form-control\" name=\"password\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" />";
+                        echo "<input  class=\"form-control\" name=\"password1\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" />";
                     else
-                        echo "<div class=\"form-group has-error has-feedback\" style=\"width:300px\"><input  class=\"form-control\" name=\"password\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" /></div>";
+                        echo "<div class=\"form-group has-error has-feedback\" style=\"width:300px\"><input  class=\"form-control\" name=\"password1\" type=\"password\" id=\"password\" placeholder=\"password\" size=\"18\" maxlength=\"18\" /></div>";
                     ?></div>
                 </p>
 

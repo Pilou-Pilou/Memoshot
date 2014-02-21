@@ -13,7 +13,7 @@ $conexions->conexions();
 
 // recuperation des données du formaulaire
 $idUser = htmlspecialchars($_POST['pseudo'], ENT_QUOTES);
-$mdp = htmlspecialchars($_POST['password'], ENT_QUOTES);
+$mdp = htmlspecialchars($_POST['password1'], ENT_QUOTES);
 
 // Recherche de l'utilisateur dans la base
 $req = mysql_query('SELECT * FROM `users` WHERE pseudo =\'' . $idUser . '\' AND password =SHA1(\'' . $mdp . '\') and status="V"')
@@ -25,6 +25,7 @@ $row = mysql_fetch_array($req);
 
 if (mysql_num_rows($req) == 1) {
     $_SESSION['pseudo'] = $row['pseudo'];
+    $_SESSION['id'] = $row['id'];
     header('Location: ../view/accueilView.php');
 } else {
     // Recherche de l'utilisateur dans la base
