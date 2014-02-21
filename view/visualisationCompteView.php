@@ -64,7 +64,7 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>MemoShot - Login</title>
+    <title>MemoShot - <?php echo $_SESSION['pseudo']; ?></title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
