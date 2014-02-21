@@ -2,7 +2,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="http://205.236.12.51/projet/h2014/equipe3/js/bootstrap.js"></script>
+    <script src="http://www.locavenue.fr/js/bootstrap.js"></script>
 </head>
 
 
@@ -23,7 +23,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"> <span class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
+                <li class="active"><a href="http://205.236.12.51/projet/h2014/equipe3/view/accueilView.php"> <span
+                            class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -35,13 +36,16 @@
 
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="../"> <span class="glyphicon glyphicon-log-out"></span>&nbspDéconnexions</a></li>
+                <li><a href="../view/visualisationCompteView.php"> <span class="glyphicon glyphicon-user"></span>&nbspMon
+                        Compte (<?php echo $_SESSION['pseudo']; ?>)</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
                             class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Modification Compte</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Abonement</a></li>
+                        <li><a href="#">Abonnement</a></li>
                     </ul>
                 </li>
             </ul>
