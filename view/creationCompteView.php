@@ -179,7 +179,7 @@ else
 
                 <input class="btn btn-success" type="submit" value="Sauvegarder"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="btn btn-primary" type="button" name="retour" id="retour" value="Retour"
-                       onclick="javascript:location.href='../'"/>
+                       onclick="location.href='../'"/>
 
 
                 <p style="color: #ff0000">&nbsp;<br><?php if ($erreur != '') echo $erreur; ?></p>
