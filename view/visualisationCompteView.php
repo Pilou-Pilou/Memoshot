@@ -102,7 +102,7 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
 
             <p align="center">Mail : <?php echo $_SESSION['mail']; ?></p>
 
-            <p align="center">Abonement : <?php echo $_SESSION['abonement']; ?></p></div>
+            <p align="center">Abonnement : <?php echo $_SESSION['abonement']; ?></p></div>
         <p align="center">&nbsp;</p>
 
         <p align="center">&nbsp;</p>
@@ -111,12 +111,12 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
                 <?php  if ($_SESSION['id'] == $_SESSION['profile']) {
                     echo '<input onclick="location.href=\'../view/modificationCompteView.php\'" class="btn btn-warning" type="button" name="Modif" id="Modif" value="Modifier" />';
                     echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="btn btn-primary" type="submit" name="ModifierCompte" id="ModifierCompte" value="Album Photo" />';
+                    <input onclick="location.href=\'../view/albumView.php\'" class="btn btn-primary" type="button" name="album" id="album" value="Album Photo" />';
                 } else {
                     if ($bouton == 'supprimer') {
                         echo '<input class="btn btn-danger" type="submit" name="Suppr" id="Suppr" value="Supprimer" />';
                         echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="btn btn-primary" type="submit" name="ModifierCompte" id="ModifierCompte" value="Album Photo" />';
+                        <input onclick="location.href=\'../view/albumView.php\'" class="btn btn-primary" type="button" name="album" id="album" value="Album Photo" />';
                     } else
                         if ($bouton == 'attente') {
                             echo '<input class="btn btn-default" type="submit" name="Annuler" id="Annuler" value="Annuler Demande d\'ajout... " />';

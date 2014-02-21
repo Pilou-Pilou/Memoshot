@@ -43,7 +43,7 @@ $mois = $moisText[$mois - 1];
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>MemoShot - Login</title>
+    <title>MemoShot - <?php echo $_SESSION['pseudo']; ?></title>
 
     <script src="../Controller/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
     <script src="../Controller/SpryAssets/SpryValidationConfirm.js" type="text/javascript"></script>
@@ -178,7 +178,7 @@ $mois = $moisText[$mois - 1];
 
 
                 <input class="btn btn-success" type="submit" value="Sauvegarder"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="btn btn-primary" type="button" name="retour" id="retour" value="Retour"
+                <input class="btn btn-primary" type="button" name="retour" id="retour" value="Retour Profil"
                        onclick="location.href='../view/visualisationCompteView.php'"/>
 
 
