@@ -123,8 +123,6 @@
 
         -->
     </style>
-    <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-    <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -135,75 +133,32 @@
                          align="middle" id="Insert_logo" style="background: #43A1CF; display:block;"/></a>
         <!-- end .header --></div>
     <div class="content">
-        <h1 align="center">Ajouter Une Photo </h1>
+        <h1 align="center">Album Photo</h1>
 
-        <form id="form1" name="form1" method="post" action=""><p align="center"><input type="file" name="photo"/></p>
-            </h1>
-            <table width="600" border="0" align="center">
-                <tr>
-                    <th scope="row">Nom</th>
-                    <td><span id="sprytextfield1">
-<label for="nom"></label>
-<input type="text" name="nom" id="nom"/>
-<span class="textfieldRequiredMsg">Non complété</span><span class="textfieldInvalidFormatMsg">Format non valide.</span></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th width="295" scope="row">
-                        <div align="center"> Hashtag 1</div>
-                    </th>
-                    <td width="295"><span id="sprytextfield2">
-<label for="ht1"></label>
-<input type="text" name="ht1" id="ht1"/>
-<span class="textfieldRequiredMsg">Non complété</span><span class="textfieldInvalidFormatMsg">Format non valide.</span></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div align="center">Hashtag 2</div>
-                    </th>
-                    <td><label for="h2"></label>
-                        <input type="text" name="h2" id="h2"/></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div align="center">Hashtag3</div>
-                    </th>
-                    <td><label for="h3"></label>
-                        <input type="text" name="h3" id="h3"/></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div align="center">Hashtag 4</div>
-                    </th>
-                    <td><label for="h4"></label>
-                        <input type="text" name="h4" id="h4"/></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div align="center">Hashtag 5</div>
-                    </th>
-                    <td><label for="h5"></label>
-                        <input type="text" name="h5" id="h5"/></td>
-                </tr>
-            </table>
-            <p align="center">&nbsp;</p>
+        </h1>
+        <table width="599" border="0" align="center">
+            <tr>
+                <th scope="row">Nom</th>
+            </tr>
+            <tr>
+                <th width="593" scope="row">
+                    <div align="center">Affichage de la photo</div>
+                </th>
+            </tr>
+        </table>
+        <p align="center">&nbsp;</p>
 
-            <p align="center">
-                <input type="submit" name="submit" id="submit" value="Ajouter à l'Album"/>
-            </p>
+        <p align="right">
+            <input type="submit" name="submit" id="submit" value="Retour"/>
+        </p>
 
-            <p>&nbsp;</p>
-            <!-- end .content -->
-        </form>
+        <p>&nbsp;</p>
+        <!-- end .content -->
+
     </div>
     <div class="footer">
         <!-- end .footer -->
     </div>
     <!-- end .container --></div>
-<script type="text/javascript">
-    var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "custom", {validateOn: ["change"]});
-    var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "custom", {validateOn: ["change"]});
-</script>
 </body>
 </html>
