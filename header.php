@@ -40,6 +40,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <?php
+                require_once('../Config/ConnexionsBD.php');
                 $conexions = new ConexionsBD();
                 $conexions->conexions();
                 $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')
