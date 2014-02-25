@@ -13,7 +13,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Accueil</title>
+    <title>MemoShot - <?php echo $_SESSION['pseudo']; ?></title>
     <link href="../css/bootstrapbis.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

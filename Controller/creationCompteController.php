@@ -61,7 +61,7 @@ if (isset($_POST['pseudo'])) {
 
     if ($_SESSION['erreur'] == '') {
         $_SESSION['erreur'] = -1;
-        if ($_FILES['photo']['tmp_name'] != '')
+        if (isset($_FILES['photo']['tmp_name']))
             $cheminPhoto = envoiImage($_FILES['photo']['tmp_name'], $_FILES['photo']['name']);
         $id = insertionDonnees($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['naissance'], $_POST['mail'], $_POST['sexe'], $cheminPhoto);
         mailEnvoi($_POST['mail'], $id);
@@ -229,7 +229,7 @@ function imageValide($photosize, $photoname)
 // fonction qui envoi l'image sur le serveur
 function envoiImage($photosize, $photoname)
 {
-    $dossier = 'http://205.236.12.51/projet/h2014/equipe3/upload/';
+    $dossier = '../upload/';
     $extension = strrchr($photoname, '.');
 
     $char = 'abcdefghijklmnopqrstuvwxyz0123456789';
