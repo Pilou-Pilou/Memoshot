@@ -1,20 +1,25 @@
 <?php
 
 session_start();
-$_SESSION['profile'] = 46;
+if (isset($_GET['id']))
+    $_SESSION['profile'] = $_GET['id'];
+else
+    $_SESSION['profile'] = $_SESSION['id'];
+
 require_once('../Config/ConnexionsBD.php');
 $connexions = new ConexionsBD();
 $connexions->conexions();
 
 // recuperartion des informations concernat le profil de la personne
-$req = mysql_query('SELECT * FROM users us join abonement abo on abo.id_abo=us.abonement WHERE id =\'' . $_SESSION['id'] . '\'')
+$req = mysql_query('SELECT * FROM users us join abonement abo on abo.id_abo=us.abonement WHERE id =\'' . $_SESSION['profile'] . '\'')
 or die ("Impossible de se connecté à la table users" . mysql_error());
 $row = mysql_fetch_array($req);
 $_SESSION['pseudo'] = $row['pseudo'];
 $_SESSION['nom'] = $row['nom'];
 $_SESSION['prenom'] = $row['prenom'];
-$image = $row['photo'];
-$image = '../images/profil.jpg';
+$image = $row['photo_profil'];
+if ($image == '')
+    $image = '../images/default.gif';
 if ($row['sexe'] == 'M')
     $_SESSION['sexe'] = 'Masculin';
 else
@@ -39,6 +44,10 @@ if (isset($_POST['Ajout'])) {
     mysql_query('INSERT INTO amis(id_amis_1,id_amis_2) VALUES (\'' . $_SESSION['id'] . '\',\'' . $_SESSION['profile'] . '\')');
 }
 
+if (isset($_POST['Accepter'])) {
+    mysql_query('UPDATE amis set status_amitier=1 where id_amis_2=\'' . $_SESSION['id'] . '\' and id_amis_1=\'' . $_SESSION['profile'] . '\'');
+}
+
 
 // recuperations des informations pour savoir quelle bouton afficher
 $bouton = 'ajout';
@@ -46,12 +55,18 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
     $req = mysql_query('SELECT * FROM amis WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' and id_amis_1 =\'' . $_SESSION['profile'] . '\' or id_amis_1 =\'' . $_SESSION['id'] . '\' and id_amis_2 =\'' . $_SESSION['profile'] . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) == 1) {
-        $req = mysql_query('SELECT * FROM amis WHERE (id_amis_2 =\'' . $_SESSION['id'] . '\' and id_amis_1 =\'' . $_SESSION['profile'] . '\') or (id_amis_1 =\'' . $_SESSION['id'] . '\' and id_amis_2 =\'' . $_SESSION['profile'] . '\') and  status_amitier=0')
+        $req = mysql_query('SELECT * FROM amis WHERE (id_amis_2 =\'' . $_SESSION['id'] . '\' and id_amis_1 =\'' . $_SESSION['profile'] . '\' and  status_amitier=0)')
         or die ("Impossible de se connecté à la table users" . mysql_error());
         if (mysql_num_rows($req) == 1) {
-            $bouton = 'attente';
+            $bouton = 'attente1';
         } else {
-            $bouton = 'supprimer';
+            $req = mysql_query('SELECT * FROM amis WHERE (id_amis_1 =\'' . $_SESSION['id'] . '\' and id_amis_2 =\'' . $_SESSION['profile'] . '\' and  status_amitier=0)')
+            or die ("Impossible de se connecté à la table users" . mysql_error());
+            if (mysql_num_rows($req) == 1) {
+                $bouton = 'attente2';
+            } else {
+                $bouton = 'supprimer';
+            }
         }
     }
 
@@ -103,7 +118,7 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
             <p align="center">Mail : <?php echo $_SESSION['mail']; ?></p>
 
             <p align="center">Abonnement : <?php echo $_SESSION['abonement']; ?></p></div>
-        <p align="center">&nbsp;</p>
+
 
         <p align="center">&nbsp;</p>
 
@@ -118,10 +133,16 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
                         echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input onclick="location.href=\'../view/albumView.php\'" class="btn btn-primary" type="button" name="album" id="album" value="Album Photo" />';
                     } else
-                        if ($bouton == 'attente') {
-                            echo '<input class="btn btn-default" type="submit" name="Annuler" id="Annuler" value="Annuler Demande d\'ajout... " />';
+                        if ($bouton == 'attente1') {
+                            echo '<input class="btn btn-success" type="submit" name="Accepter" id="Accepter" value="Accepter l\'invitation " />';
+                            echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="btn btn-default" type="submit" name="Annuler" id="Annuler" value="Annuler Demande d\'ajout... " />';
                         } else {
-                            echo '<input class="btn btn-success" type="submit" name="Ajout" id="Ajout" value="Ajouter" />';
+                            if ($bouton == 'attente2') {
+                                echo '<input class="btn btn-default" type="submit" name="Annuler" id="Annuler" value="Annuler Demande d\'ajout... " />';
+                            } else {
+                                echo '<input class="btn btn-success" type="submit" name="Ajout" id="Ajout" value="Ajouter" />';
+                            }
                         }
                 }
                 ?>

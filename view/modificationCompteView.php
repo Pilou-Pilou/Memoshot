@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once('../Config/ConnexionsBD.php');
 $erreur = '';
 $pseudo = '';
 $nom = '';
@@ -24,6 +24,20 @@ if (isset($_SESSION['erreur']))
 else
     $erreur = '';
 
+if (!isset($_SESSION['naissance'])) {
+    $conexions = new ConexionsBD();
+    $conexions->conexions();
+    $req = mysql_query('SELECT * FROM  users where id=' . $_SESSION['id'])
+    or die ("Impossible de se connecté à la table album" . mysql_error());
+    $valeur = mysql_fetch_assoc($req);
+    $_SESSION['naissance'] = $valeur['naissance'];
+    $_SESSION['nom'] = $valeur['nom'];
+    $_SESSION['prenom'] = $valeur['prenom'];
+    $_SESSION['mail'] = $valeur['mail'];
+    $_SESSION['sexe'] = $valeur['sexe'];
+}
+
+
 $date_explosee = explode("-", $_SESSION['naissance']);
 $jour = $date_explosee[2];
 $mois = $date_explosee[1];
@@ -43,7 +57,7 @@ $mois = $moisText[$mois - 1];
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>MemoShot - <?php echo $_SESSION['pseudo']; ?></title>
+    <title>MemoShot - <?php echo $_SESSION['pseudo_util']; ?></title>
 
     <script src="../Controller/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
     <script src="../Controller/SpryAssets/SpryValidationConfirm.js" type="text/javascript"></script>
@@ -77,7 +91,7 @@ $mois = $moisText[$mois - 1];
                         <td width="295">
                             <span id="sprytextfield3">
                                 <input type="text" name="pseudo" id="pseudo2" placeholder="Pseudo"
-                                       value="<?php echo $_SESSION['pseudo']; ?>"/>
+                                       value="<?php echo $_SESSION['pseudo_util']; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Non complété</span>
                             </span>
@@ -89,7 +103,8 @@ $mois = $moisText[$mois - 1];
                         </th>
                         <td>
                             <span id="sprytextfield4">
-                                <input type="password" name="password" id="nom2" value='' placeholder="Mot de Passe"/>
+                                <input type="password" autocomplete="off" name="password" id="nom2" value=''
+                                       placeholder="Mot de Passe"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Non complété</span>
                             </span>
@@ -200,9 +215,9 @@ $mois = $moisText[$mois - 1];
 
     sexe =<?php echo json_encode($_SESSION['sexe']) ?>;
 
-    if (sexe == 'Féminin')
+    if (sexe == 'Féminin' || sexe == 'F')
         document.getElementById('Sexe_0').checked = 'true';
-    if (sexe == 'Masculin')
+    if (sexe == 'Masculin' || sexe == 'M')
         document.getElementById('Sexe_1').checked = 'true';
 
 
