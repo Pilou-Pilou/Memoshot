@@ -251,7 +251,6 @@ th {
 
     a,
     a:visited {
-        text-decoration: underline;
     }
 
     a[href]:after {
@@ -375,7 +374,6 @@ a {
 a:hover,
 a:focus {
     color: #2a6496;
-    text-decoration: underline;
 }
 
 a:focus {
@@ -2815,7 +2813,6 @@ fieldset[disabled] .btn-link {
 .btn-link:hover,
 .btn-link:focus {
     color: #2a6496;
-    text-decoration: underline;
     background-color: transparent;
 }
 

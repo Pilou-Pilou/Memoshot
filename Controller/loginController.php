@@ -24,7 +24,7 @@ $row2 = mysql_fetch_array($req2);
 $row = mysql_fetch_array($req);
 
 if (mysql_num_rows($req) == 1) {
-    $_SESSION['pseudo'] = $row['pseudo'];
+    $_SESSION['pseudo_util'] = $row['pseudo'];
     $_SESSION['id'] = $row['id'];
     header('Location: ../view/accueilView.php');
 } else {

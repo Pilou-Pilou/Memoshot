@@ -9,7 +9,6 @@ $prenom = '';
 $mail = '';
 $naissance = '';
 $sexe = '';
-
 if (isset($_POST['pseudo'])) {
     $pseudo = $_POST['pseudo'];
     $nom = $_POST['nom'];
@@ -66,7 +65,7 @@ else
                         </th>
                         <td width="295">
                             <span id="sprytextfield3">
-                                <input type="text" name="pseudo" autocomplete=\"off\" id="pseudo2" placeholder="Pseudo"
+                                <input type="text" name="pseudo" autocomplete="off" id="pseudo2" placeholder="Pseudo"
                                        value="<?php echo $pseudo; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Non complété</span>
@@ -79,7 +78,7 @@ else
                         </th>
                         <td>
                             <span id="sprytextfield4">
-                                <input type="password" autocomplete=\"off\" name="password" id="nom2"
+                                <input type="password" autocomplete="off" name="password" id="nom2"
                                        placeholder="Mot de Passe">
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Non complété</span>
@@ -92,7 +91,7 @@ else
                         </th>
                         <td>
                             <span id="spryconfirm1">
-                                <input type="password" autocomplete=\"off\" name="passwordVerif" id="passwordVerif3"
+                                <input type="password" autocomplete="off" name="passwordVerif" id="passwordVerif3"
                                        placeholder="Mot de Passe"/>
                                 <span class="confirmRequiredMsg">Non complété</span>
                                 <span class="confirmInvalidMsg">Try Again...</span>
@@ -105,7 +104,7 @@ else
                         </th>
                         <td>
                             <span id="sprytextfield5">
-                                <input type="text" autocomplete=\"off\" name="nom" id="nom3" placeholder="Nom"
+                                <input type="text" autocomplete="off" name="nom" id="nom3" placeholder="Nom"
                                        value="<?php echo $nom; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Non complété</span>
@@ -118,7 +117,7 @@ else
                         </th>
                         <td>
                             <span id="sprytextfield6">
-                                <input type="text" autocomplete=\"off\" name="prenom" id="prenom" placeholder="Prenom"
+                                <input type="text" autocomplete="off" name="prenom" id="prenom" placeholder="Prenom"
                                        value="<?php echo $prenom; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Format non valide.</span>
@@ -147,7 +146,7 @@ else
                         </th>
                         <td>
                             <span id="sprytextfield1">
-                                <input type="text" autocomplete=\"off\" name="naissance" id="naissance"
+                                <input type="text" autocomplete="off" name="naissance" id="naissance"
                                        placeholder="Naissance"
                                        value="<?php echo $naissance; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
@@ -161,7 +160,7 @@ else
                         </th>
                         <td>
                             <span id="sprytextfield2">
-                                <input type="text" autocomplete=\"off\" name="mail" id="mail" placeholder="Mail"
+                                <input type="text" autocomplete="off" name="mail" id="mail" placeholder="Mail"
                                        value="<?php echo $mail; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Try Again...</span>
