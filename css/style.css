@@ -83,6 +83,7 @@ a:hover, a:active, a:focus {
 
 /* ~~ Pied de page ~~ */
 .footer {
+    width: 33%;
     left: 33%;
     position: fixed;
     vertical-align: text-bottom;

@@ -249,10 +249,6 @@ th {
         box-shadow: none !important;
     }
 
-    a,
-    a:visited {
-    }
-
     a[href]:after {
         content: " (" attr(href) ")";
     }

@@ -6,12 +6,12 @@
  * Date: 07/02/14
  * Time: 10:34
  */
-class ConexionsBD
+class ConnexionsBD
 {
 
     var $bdd;
 
-    function conexions()
+    function connexions()
     {
         $ini_array = parse_ini_file("../Config/login_db.ini");
         $user = $ini_array["user"];
@@ -25,9 +25,10 @@ class ConexionsBD
 
     }
 
-    function deconnexions()
+    function deconections()
     {
-        mysql_close($bdd);
+        mysql_close($this->bdd);
     }
+
 
 }

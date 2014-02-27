@@ -137,8 +137,8 @@ function mailEnvoi($mail, $id)
 // function qui insert une personne dans la base
 function  insertionDonnees($pseudo, $nom, $prenom, $password, $naissance, $mail, $sexe, $photo)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionsBD();
+    $connexions->connexions();
     mysql_query('INSERT INTO users (pseudo,nom,prenom,password,mail,naissance,sexe,photo) VALUES (\'' . $pseudo . '\',\'' . $nom . '\',\'' . $prenom . '\',SHA1(\'' . $password . '\'),\'' . $mail . '\',STR_TO_DATE(\'' . $naissance . '\',\'%d/%m/%Y\'),\'' . $sexe . '\',\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     $id = mysql_insert_id();
@@ -148,8 +148,8 @@ function  insertionDonnees($pseudo, $nom, $prenom, $password, $naissance, $mail,
 // function qui regarde si le pseudo est déjà prix
 function speudoUtilisé($pseudo)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionsBD();
+    $connexions->connexions();
     $req = mysql_query('SELECT * FROM users WHERE pseudo =\'' . $pseudo . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)
@@ -161,8 +161,8 @@ function speudoUtilisé($pseudo)
 // function qui regarde si l adresse mal est deja utilisée
 function mailUtilisé($mail)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionsBD();
+    $connexions->connexions();
     $req = mysql_query('SELECT * FROM `users` WHERE mail =\'' . $mail . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)
