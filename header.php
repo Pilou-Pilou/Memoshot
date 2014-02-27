@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="http://www.locavenue.fr/js/bootstrap.js"></script>
 </head>
-
-
 <nav style="z-index: 9999;position: fixed;width: 100%;" class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,14 +16,11 @@
                 <span class="icon-bar"></span>
             </button>
             <div><img style="margin-top:5px;height:40px" src="../images/MimageBanniere.png">&nbsp&nbsp&nbsp&nbsp</div>
-
-
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/accueilView.php'; ?>"> <span
+                <li><a href="../view/accueilView.php'; ?>"> <span
                             class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -35,23 +30,19 @@
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>&nbspResearch
                 </button>
             </form>
-
-
             <ul class="nav navbar-nav navbar-right">
-
                 <?php
                 require_once('../Config/ConnexionsBD.php');
-                $conexions = new ConexionsBD();
-                $conexions->conexions();
+                $connexions = new ConnexionsBD();
+                $connexions->connexions();
                 $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')
-                or die ("Impossible de se connecté à la table 'amis'" . mysql_error());
-
+                or die ("Impossible de se connecter à la table 'amis'" . mysql_error());
                 if (mysql_num_rows($req) == 0) {
                     echo ' <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a>&nbspAucun Notification ...</a></li>
+                                    <li><a>&nbspAucune Notification ...</a></li>
                                 </ul>
                             </li>';
                 } else {
@@ -60,27 +51,25 @@
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">';
                     while ($valeur = mysql_fetch_assoc($req)) {
-                        echo '<li><a href="' . dirname($_SERVER['PHP_SELF']) . '/visualisationCompteView.php?id=' . $valeur['id'] . '">' . $valeur['pseudo'] . ' vous a demander en amis </a></li>';
+                        echo '<li><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '">' . $valeur['pseudo'] . ' vous a demander en amis </a></li>';
                         echo '<li class="divider"></li>';
                     }
                     echo '</ul>
-
                             <div id="notification" class="notification">' . mysql_num_rows($req) . '</div></li>';
                 }
-
                 ?>
-                <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/ajouterUnePhotoView.php'; ?>"> <span
+                <li><a href="../view/ajouterUnePhotoView.php'; ?>"> <span
                             class="glyphicon glyphicon-camera"></span>&nbspAjouter une photo</a></li>
-                <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/fermer_session.php'; ?>"> <span
+                <li><a href="../view/fermer_session.php'; ?>"> <span
                             class="glyphicon glyphicon-log-out"></span>&nbspDéconnexions</a></li>
-                <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/visualisationCompteView.php'; ?>"> <span
+                <li><a href="../view/visualisationCompteView.php'; ?>"> <span
                             class="glyphicon glyphicon-user"></span>&nbspMon
                         Compte (<?php echo $_SESSION['pseudo_util']; ?>)</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
                             class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/modificationCompteView.php'; ?>">Modification
+                        <li><a href="../view/modificationCompteView.php'; ?>">Modification
                                 Compte</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Abonnement</a></li>
@@ -92,19 +81,3 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
-<script>
-    $('#recherche').autocomplete();
-
-    var liste = [
-        "Draggable",
-        "Droppable",
-        "Resizable",
-        "Selectable",
-        "Sortable"
-    ];
-    $('#recherche').autocomplete({
-        source: liste
-    });
-
-</script>

@@ -3,8 +3,8 @@
 session_start();
 $_SESSION['id'] = $_GET['id'];
 require_once('../Config/ConnexionsBD.php');
-$conexions = new ConexionsBD();
-$conexions->conexions();
+$connexions = new ConnexionsBD();
+$connexions->connexions();
 mysql_query('UPDATE users set status="V" where id=\'' . $_SESSION['id'] . '\'')
 or die ("Impossible de se connecté à la table users" . mysql_error());
 

@@ -35,8 +35,8 @@ header('Location: ../view/ajouterUnePhotoView.php');
 
 function  insertionPhoto($nom, $tag1, $tag2, $tag3, $tag4, $tag5, $photo)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionsBD();
+    $connexions->connexions();
     mysql_query('INSERT INTO album (id_utilisateur,message,tag1,tag2,tag3,tag4,tag5,photo) VALUES (\'' . $_SESSION['id'] . '\',"' . $nom . '","' . $tag1 . '","' . $tag2 . '","' . $tag3 . '","' . $tag4 . '","' . $tag5 . '",\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table album" . mysql_error());
 }

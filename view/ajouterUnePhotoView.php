@@ -65,7 +65,7 @@ if (isset($_SESSION['erreur'])) {
                     </tr>
                     <tr>
                         <th width="294" scope="row">
-                            <div align="center"><label for="ht2">Hashtag 2</label></div>
+                            <div align="center"><label for="h2">Hashtag 2</label></div>
                         </th>
                         <td>
                             <input type="text" name="h2" id="h2"/>
@@ -73,7 +73,7 @@ if (isset($_SESSION['erreur'])) {
                     </tr>
                     <tr>
                         <th width="294" scope="row">
-                            <div align="center"><label for="ht3">Hashtag 3</label></div>
+                            <div align="center"><label for="h3">Hashtag 3</label></div>
                         </th>
                         <td>
                             <input type="text" name="h3" id="h3"/>
@@ -81,7 +81,7 @@ if (isset($_SESSION['erreur'])) {
                     </tr>
                     <tr>
                         <th width="294" scope="row">
-                            <div align="center"><label for="ht3">Hashtag 4</label></div>
+                            <div align="center"><label for="h4">Hashtag 4</label></div>
                         </th>
                         <td>
                             <input type="text" name="h4" id="h4"/>
@@ -89,7 +89,7 @@ if (isset($_SESSION['erreur'])) {
                     </tr>
                     <tr>
                         <th width="294" scope="row">
-                            <div align="center"><label for="ht5">Hashtag 5</label></div>
+                            <div align="center"><label for="h5">Hashtag 5</label></div>
                         </th>
                         <td>
                             <input type="text" name="h5" id="h5"/>

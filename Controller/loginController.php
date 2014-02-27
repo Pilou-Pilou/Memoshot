@@ -8,8 +8,8 @@
 
 session_start();
 require('../Config/ConnexionsBD.php');
-$conexions = new ConexionsBD();
-$conexions->conexions();
+$connexions = new ConnexionsBD();
+$connexions->connexions();
 
 // recuperation des données du formaulaire
 $idUser = htmlspecialchars($_POST['pseudo'], ENT_QUOTES);
@@ -39,5 +39,5 @@ if (mysql_num_rows($req) == 1) {
 }
 
 // fermeture de la connexions
-$conexions->deconnexions();
+$connexions->deconections();
 
