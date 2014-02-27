@@ -6,6 +6,7 @@
  * Time: 09:48
  */
 session_start();
+require_once('../Modele/testSessionModele.php');
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once('../Modele/testSessionModele.php');
 $erreur = '';
 if (isset($_SESSION['erreur'])) {
     if ($_SESSION['erreur'] == -1)

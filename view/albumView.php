@@ -7,6 +7,7 @@
  */
 
 session_start();
+require_once('../Modele/testSessionModele.php');
 require_once('../Config/ConnexionsBD.php');
 $connexions = new ConnexionsBD();
 $connexions->connexions();

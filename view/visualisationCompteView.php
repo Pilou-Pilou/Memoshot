@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('../Modele/testSessionModele.php');
 if (isset($_GET['id']))
     $_SESSION['profile'] = $_GET['id'];
 else

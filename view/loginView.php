@@ -23,6 +23,9 @@
             case 2 :
                 $action = 3;
                 break;
+            case 3 :
+                $action = 4;
+                break;
 
         }
     }
@@ -50,6 +53,8 @@
                 else {
                     if ($action == 3)
                         echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre compte n'est pas encore valider allez dans votre boite mail confirmer votre inscription </p>";
+                    else
+                        echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre n'étes pas logger veuillez rentrer les informations de connexions pour vous connecter</p>";
                 }
             }
 

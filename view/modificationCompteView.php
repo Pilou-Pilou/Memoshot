@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('../Modele/testSessionModele.php');
 require_once('../Config/ConnexionsBD.php');
 $erreur = '';
 $pseudo = '';

@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('../Modele/testSessionModele.php');
 $_SESSION['id'] = $_GET['id'];
 require_once('../Config/ConnexionsBD.php');
 $connexions = new ConnexionsBD();
