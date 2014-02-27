@@ -20,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="../view/accueilView.php'; ?>"> <span
+                <li><a href="../view/accueilView.php"> <span
                             class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -58,18 +58,18 @@
                             <div id="notification" class="notification">' . mysql_num_rows($req) . '</div></li>';
                 }
                 ?>
-                <li><a href="../view/ajouterUnePhotoView.php'; ?>"> <span
+                <li><a href="../view/ajouterUnePhotoView.php"> <span
                             class="glyphicon glyphicon-camera"></span>&nbspAjouter une photo</a></li>
-                <li><a href="../view/fermer_session.php'; ?>"> <span
+                <li><a href="../view/fermer_session.php"> <span
                             class="glyphicon glyphicon-log-out"></span>&nbspDéconnexions</a></li>
-                <li><a href="../view/visualisationCompteView.php'; ?>"> <span
+                <li><a href="../view/visualisationCompteView.php"> <span
                             class="glyphicon glyphicon-user"></span>&nbspMon
                         Compte (<?php echo $_SESSION['pseudo_util']; ?>)</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
                             class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../view/modificationCompteView.php'; ?>">Modification
+                        <li><a href="../view/modificationCompteView.php">Modification
                                 Compte</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Abonnement</a></li>

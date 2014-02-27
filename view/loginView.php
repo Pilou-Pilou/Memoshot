@@ -94,10 +94,11 @@
             </form>
         </div>
     </div>
-    <div class="footer">
-        <p align="center">Projet E-Commerce Julien Sergent et Mathieu Molinengo</p>
-        <!-- end .footer --></div>
+
     <!-- end .container --></div>
+<div class="footer">
+    <p align="center">Projet E-Commerce Julien Sergent et Mathieu Molinengo</p>
+    <!-- end .footer --></div>
 
 </body>
 </html>

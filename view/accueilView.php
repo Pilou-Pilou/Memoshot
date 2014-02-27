@@ -109,7 +109,7 @@ require_once('../Modele/testSessionModele.php');
         ?>
     </table>
 </div>
-<div id="colonnedroite"><h1 align="center"><b>Pub</b></h1></div>
+<div id="colonnedroite"><h1 align="center"><b>Pub</b></h1></div
 
 </body>
 </html>
