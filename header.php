@@ -2,8 +2,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="http://www.locavenue.fr/js/bootstrap.js"></script>
+    <script src="../js/bootstrap.js"></script>
 </head>
+
+
 <nav style="z-index: 9999;position: fixed;width: 100%;" class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,11 +45,12 @@
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a>&nbspAucune Notification ...</a></li>
+                                    <li class="divider"></li>
                                 </ul>
-                            </li>';
+                            <div id="notification" class="notification">' . mysql_num_rows($req) . '</div></li>';
                 } else {
                     echo '<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">';
                     while ($valeur = mysql_fetch_assoc($req)) {
@@ -66,7 +69,7 @@
                             class="glyphicon glyphicon-user"></span>&nbspMon
                         Compte (<?php echo $_SESSION['pseudo_util']; ?>)</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
                             class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../view/modificationCompteView.php">Modification
