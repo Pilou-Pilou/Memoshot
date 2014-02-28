@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>MemoShot - Login</title>
+    <style type="text/css">
+
+        body {
+            font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+            background: #4E5869;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            background-color: #43A1CF;
+        }
+
+        /* ~~ Sélecteurs d'éléments/balises ~~ */
+        ul, ol, dl {
+            /* En raison des variations entre les navigateurs, il est conseillé d'attribuer une valeur de zéro aux marges intérieures et aux marges des listes. A des fins de cohérence, vous pouvez définir les valeurs désirées dans cette zone ou dans les éléments de liste (LI, DT, DD) qu'elle contient. N'oubliez pas que les paramètres que vous définissez ici se répercuteront sur la liste .nav, sauf si vous rédigez un sélecteur plus spécifique. */
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-top: 0; /* la suppression de la marge supérieure résout un problème où les marges sortent de leur div conteneur. La marge inférieure restante l'éloignera de tout élément qui suit. */
+
+            padding-right: 15px;
+            padding-left: 15px; /* l'ajout de la marge intérieure aux côtés des éléments à l'intérieur des divs, et non aux divs proprement dit, évite le recours à des calculs de modèle de boîte. Une autre méthode consiste à employer une div imbriquée avec marge intérieure latérale. */
+        }
+
+        a img {
+            /* ce sélecteur élimine la bordure bleue par défaut affichée dans certains navigateurs autour d'une image lorsque celle-ci est entourée d'un lien. */
+            border: none;
+        }
+
+        /* ~~ La définition du style des liens de votre site doit respecter cet ordre, y compris le groupe de sélecteurs qui créent l'effet de survol. ~~ */
+        a:link {
+            color: #414958;
+            text-decoration: underline; /* à moins que vous ne définissiez un style particulièrement exclusif pour vos liens, mieux vaut prévoir un soulignement, qui garantit une identification visuelle rapide. */
+        }
+
+        a:visited {
+            color: #4E5869;
+            text-decoration: underline;
+        }
+
+        a:hover, a:active, a:focus {
+            /* ce groupe de sélecteurs offrira à un navigateur au clavier la même expérience de survol que celle d'une personne employant la souris. */
+            text-decoration: none;
+        }
+
+        /* ~~ ce conteneur entoure toutes les autres divs, en leur attribuant leur largeur sur base d'un pourcentage ~~ */
+        .container {
+
+            width: 60%;
+            max-width: 779px; /* une valeur « max-width » peut s'avérer utile pour éviter que cette mise en page ne soit trop large sur un moniteur de grande taille. La lisibilité de la longueur de ligne est ainsi améliorée. IE6 ne tient pas compte de cette déclaration. */
+            min-width: 600px;
+            /* une valeur « min-width » peut s'avérer utile pour éviter que cette mise en page ne soit trop étroite. La longueur de ligne est ainsi plus lisible dans les colonnes latérales. IE6 ne tient pas compte de cette déclaration. */
+            background: #FFF;
+            margin: 0 auto; /* la valeur automatique sur les côtés, associée à la largeur, permet de centrer la mise en page. Elle n'est pas nécessaire si vous fixez la largeur du conteneur à 100%. */
+        }
+
+        /* ~~aucune largeur n'est attribuée à l'en-tête. Il occupera toute la largeur de votre mise en page. Il contient un espace réservé pour une image, qui doit être remplacé par votre logo lié.~~ */
+        .header {
+            background: #43A1CF;
+        }
+
+        /* ~~ Informations de mise en page. ~~
+
+        1) La marge intérieure n'est placée qu'en haut et/ou en bas de la div. Les éléments à l'intérieur de cette div posséderont une marge intérieure sur les côtés. Vous évitez ainsi de devoir recourir à des « calculs de modèle de boîte ». N'oubliez pas que si vous ajoutez une marge intérieure latérale ou une bordure à la div proprement dite, elle sera ajoutée à la largeur que vous définissez pour créer la largeur totale. Vous pouvez également supprimer la marge intérieure de l'élément dans la div et placer une seconde div à l'intérieur, sans largeur et possédant une marge intérieure appropriée pour votre concept.
+
+        */
+        .content {
+            padding: 10px 0;
+        }
+
+        /* ~~ Ce sélecteur groupé donne de l'espace aux listes dans la zone .content ~~ */
+        .content ul, .content ol {
+            padding: 0 15px 15px 40px; /* cette marge intérieure reflète la marge intérieure droite dans les en-têtes et la règle de paragraphe ci-dessus. Une marge intérieure a été placée en bas, afin d'assurer un espace entre les autres éléments des listes, et à gauche pour créer le retrait. Vous pouvez les régler comme bon vous semble. */
+        }
+
+        /* ~~ Pied de page ~~ */
+        .footer {
+            left: 30%;
+            position: fixed;
+            vertical-align: text-bottom;
+            bottom: 0;
+            background: #43A1CF;
+        }
+
+        /* ~~ classes flottant/effacement diverses ~~ */
+        .fltrt {
+            /* cette classe peut servir à faire flotter un élément depuis la droite sur votre page. L'élément flottant doit précéder l'élément à côté duquel il doit apparaître sur la page. */
+            float: right;
+            margin-left: 8px;
+        }
+
+        .fltlft {
+            /* cette classe peut servir à faire flotter un élément depuis la gauche sur votre page. L'élément flottant doit précéder l'élément à côté duquel il doit apparaître sur la page. */
+            float: left;
+            margin-right: 8px;
+        }
+
+        .clearfloat {
+            /* cette classe peut être placée sur une div <br /> ou vide, en tant qu'élément final suivant la dernière div flottante (dans le #container) si le paramètre #footer est supprimé ou retiré du #container */
+            clear: both;
+            height: 0;
+            font-size: 1px;
+            line-height: 0px;
+        }
+
+        .container .content #form1 table tr td #sprytextfield1 .textfieldInvalidFormatMsg {
+            font-size: 90%;
+        }
+
+        .container .content #form1 table tr td #sprytextfield1 .textfieldInvalidFormatMsg {
+            font-size: 50%;
+        }
+
+        .container .content #form1 table tr td #sprytextfield1 .textfieldInvalidFormatMsg {
+            font-size: 60%;
+        }
+
+        .polaroid-images a {
+            background: white;
+            display: inline;
+            float: left;
+            margin: 0 15px 30px;
+            padding: 10px 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+            -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+            -webkit-transition: all .15s linear;
+            -moz-transition: all .15s linear;
+            transition: all .15s linear;
+            z-index: 0;
+        }
+
+        .polaroid-images a:after {
+            color: #333;
+            font-size: 20px;
+            content: attr(title);
+            position: relative;
+            top: 15px;
+        }
+
+        .polaroid-images img {
+            display: block;
+            width: inherit;
+        }
+
+        .polaroid-images a:nth-child(2n) {
+            -webkit-transform: rotate(4deg);
+            -moz-transform: rotate(4deg);
+            transform: rotate(4deg);
+        }
+
+        .polaroid-images a:nth-child(3n) {
+            -webkit-transform: rotate(-24deg);
+            -moz-transform: rotate(-24deg);
+            transform: rotate(-24deg);
+        }
+
+        .polaroid-images a:nth-child(4n) {
+            -webkit-transform: rotate(14deg);
+            -moz-transform: rotate(14deg);
+            transform: rotate(14deg);
+        }
+
+        .polaroid-images a:nth-child(5n) {
+            -webkit-transform: rotate(-18deg);
+            -moz-transform: rotate(-18deg);
+            transform: rotate(-18deg);
+        }
+
+        .polaroid-images a:hover {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            transform: scale(1.2);
+            z-index: 10;
+            -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+            -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+        }
+
+        -->
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="#"><img src="logo.png" alt="Insérer le logo ici" name="Insert_logo" width="779" height="211"
+                         align="middle" id="Insert_logo" style="background: #43A1CF; display:block;"/></a>
+        <!-- end .header --></div>
+    <div class="content">
+        <h1 align="center">Album Photo</h1>
+
+        <div class="polaroid-images">
+            <a href="" title="Cave"><img height="200" src="images/water.jpg" alt="Cave" title="Cave"/></a>
+            <a href="" title="Island"><img height="200" src="images/water2.png" alt="Island" title="Island"/></a>
+            <a href="" title="Islands Forest"><img height="200" src="images/water3.png" alt="Islands Forest"
+                                                   title="Islands Forest"/></a>
+            <a href="" title="Decking"><img height="200" src="images/water4.jpg" alt="Decking" title="Decking"/></a>
+            <a href="" title="Lake"><img height="200" src="images/water5.png" alt="Lake" title="Lake"/></a>
+            <a href="" title="Mountains"><img height="200" src="images/water6.jpg" alt="Mountains"
+                                              title="Mountains"/></a>
+            <a href="" title="Forest"><img height="200" src="images/water7.jpg" alt="Forest" title="Forest"/></a>
+            <a href="" title="Coast Valley"><img height="200" src="images/water8.jpg" alt="Coast Valley"
+                                                 title="Coast Valley"/>
+                <a href="" title="Coast Valley"><img height="200" src="images/water9.jpg" alt="Coast Valley"
+                                                     title="Coast Valley"/></a>
+        </div>
+
+
+        <p align="center">&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+        <!-- end .content -->
+
+    </div>
+    <div class="footer">
+        <!-- end .footer -->
+    </div>
+    <!-- end .container --></div>
+</body>
+</html>
