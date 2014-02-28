@@ -139,7 +139,7 @@ function  insertionDonnees($pseudo, $nom, $prenom, $password, $naissance, $mail,
 {
     $connexions = new ConnexionBD();
     $connexions->connexion();
-    mysql_query('INSERT INTO users (pseudo,nom,prenom,password,mail,naissance,sexe,photo) VALUES (\'' . $pseudo . '\',\'' . $nom . '\',\'' . $prenom . '\',SHA1(\'' . $password . '\'),\'' . $mail . '\',STR_TO_DATE(\'' . $naissance . '\',\'%d/%m/%Y\'),\'' . $sexe . '\',\'' . $photo . '\')')
+    mysql_query('INSERT INTO users (pseudo,nom,prenom,password,mail,naissance,sexe,photo_profil) VALUES (\'' . $pseudo . '\',\'' . $nom . '\',\'' . $prenom . '\',SHA1(\'' . $password . '\'),\'' . $mail . '\',STR_TO_DATE(\'' . $naissance . '\',\'%d/%m/%Y\'),\'' . $sexe . '\',\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     $id = mysql_insert_id();
     return $id;
