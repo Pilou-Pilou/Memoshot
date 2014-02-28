@@ -33,8 +33,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 require_once('../Config/ConnexionsBD.php');
-                $connexions = new ConnexionsBD();
-                $connexions->connexions();
+                $connexions = new ConnexionBD();
+                $connexions->connexion();
                 $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')
                 or die ("Impossible de se connecter à la table 'amis'" . mysql_error());
                 if (mysql_num_rows($req) == 0) {

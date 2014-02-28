@@ -10,7 +10,7 @@ require_once('../Config/ConnexionsBD.php');
 // --- Récupération des paramètres POST
 $commentaire = $_POST["commentaire"];
 
-$connexions = new ConnexionsBD();
-$connexions->connexions();
+$connexions = new ConnexionBD();
+$connexions->connexion();
 mysql_query('DELETE FROM commentaires where id_commentaires=\'' . $commentaire . '\'')
 or die (mysql_error() . "Impossible de se connecter à la table commentaires");

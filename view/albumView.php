@@ -9,8 +9,8 @@
 session_start();
 require_once('../Modele/testSessionModele.php');
 require_once('../Config/ConnexionsBD.php');
-$connexions = new ConnexionsBD();
-$connexions->connexions();
+$connexions = new ConnexionBD();
+$connexions->connexion();
 $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['id'] . '\'')
 or die ("Impossible de se connecté à la table album" . mysql_error());
 while ($valeur = mysql_fetch_assoc($req)) {
