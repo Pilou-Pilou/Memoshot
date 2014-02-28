@@ -61,7 +61,7 @@ if (isset($_POST['pseudo'])) {
 
     if ($_SESSION['erreur'] == '') {
         $_SESSION['erreur'] = -1;
-        if (isset($_FILES['photo']['tmp_name']))
+        if ($_FILES['photo']['tmp_name'] != '')
             $cheminPhoto = envoiImage($_FILES['photo']['tmp_name'], $_FILES['photo']['name']);
         $id = insertionDonnees($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['naissance'], $_POST['mail'], $_POST['sexe'], $cheminPhoto);
         mailEnvoi($_POST['mail'], $id);
