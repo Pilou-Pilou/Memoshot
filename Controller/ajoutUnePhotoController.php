@@ -75,5 +75,5 @@ function envoiImage($photosize, $photoname)
     if (move_uploaded_file($photosize, $dossier . $fichier . $extension)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         return $dossier . $fichier . $extension;
     else
-        return '';
+        return '../upload/';
 }
