@@ -34,7 +34,6 @@ a:link {
 
 a:visited {
     color: #4E5869;
-    text-decoration: underline;
 }
 
 a:hover, a:active, a:focus {
@@ -84,6 +83,7 @@ a:hover, a:active, a:focus {
 
 /* ~~ Pied de page ~~ */
 .footer {
+    width: 33%;
     left: 33%;
     position: fixed;
     vertical-align: text-bottom;
@@ -114,19 +114,46 @@ a:hover, a:active, a:focus {
 
 #separation {
     top: 51px;
-    background-color: #fdff4f;
-    position: fixed;
+    background-color: #d1cece;
+    position: absolute;
     height: 30px;
     width: 100%;
     z-index: 100;
 }
 
+#colonnedroite {
+    top: 81px;
+    position: fixed;
+    left: 80%;
+    background-color: #d1cece;
+    width: 16%;
+    height: 88%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    /* Bordures */
+    border: 2px rgb(155, 160, 155) solid;
+    /* Arrondis de la bordure*/
+    border-radius: 10px 10px 10px 10px;
+    background-color: rgb(115, 255, 221);
+    padding: 10px 0
+}
+
 #colonnegauche {
     top: 81px;
     position: fixed;
-    background-color: red;
-    width: 20%;
-    height: 100%;
+    background-color: #d1cece;
+    width: 16%;
+    height: 88%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    /* Bordures */
+    border: 2px rgb(155, 160, 155) solid;
+    /* Arrondis de la bordure*/
+    border-radius: 10px 10px 10px 10px;
+    background-color: rgb(115, 255, 221);
+    padding: 10px 0
 }
 
 #colonnemilieu {
@@ -135,22 +162,54 @@ a:hover, a:active, a:focus {
     top: 81px;
     position: absolute;
     left: 20%;
-    background-color: #9476d1;
+    background-color: #d1cece;
     width: 60%;
     overflow: hidden;
 }
 
-.clear {
-    clear: both;
+.poster {
+    /* Bordures */
+    border: 2px rgb(155, 160, 155) solid;
+    /* Arrondis de la bordure*/
+    border-radius: 10px 10px 10px 10px;
+    background-color: rgb(237, 234, 255);
+    padding: 10px 0
 }
 
-#colonnedroite {
-    top: 81px;
-    position: fixed;
-    left: 80%;
-    background-color: green;
-    height: 100%;
-    width: 20%;
+.commentaires {
+    /* Bordures */
+    border: 2px rgb(199, 205, 199) solid;
+    /* Arrondis de la bordure*/
+    /*border-radius: 10px 10px 10px 10px;*/
+    background-color: rgb(153, 171, 228);
+    padding: 10px 0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+a.cancel:hover {
+    color: #d12228;
+    cursor: pointer;
+}
+
+.notification {
+    position: absolute; /* This breaks the div from the normal HTML document. */
+    top: 10px;
+    right: 113px;
+    padding: 1px 4px 1px 4px;
+    background-color: red; /* you could use a background image if you'd like as well */
+    color: white;
+    font-weight: bold;
+    font-size: 0.65em;
+
+    /* The following is CSS3, but isn't crucial for this technique to work. */
+    /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+    /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+    border-radius: 100px;
+}
+
+.clear {
+    clear: both;
 }
 
 .roundedImageShadow {
@@ -167,4 +226,71 @@ a:hover, a:active, a:focus {
     border-radius: 60px;
     width: 120px;
     height: 120px;
+}
+
+.polaroid-images a {
+    background: white;
+    display: inline;
+    float: left;
+    margin: 0 15px 30px;
+    padding: 10px 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
+    z-index: 0;
+}
+
+.polaroid-images a:after {
+    color: #333;
+    font-size: 20px;
+    content: attr(title);
+    position: relative;
+    top: 15px;
+}
+
+.polaroid-images img {
+    display: block;
+    width: inherit;
+}
+
+.polaroid-images a:nth-child(2n) {
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    transform: rotate(4deg);
+}
+
+.polaroid-images a:nth-child(3n) {
+    -webkit-transform: rotate(-24deg);
+    -moz-transform: rotate(-24deg);
+    transform: rotate(-24deg);
+}
+
+.polaroid-images a:nth-child(4n) {
+    -webkit-transform: rotate(14deg);
+    -moz-transform: rotate(14deg);
+    transform: rotate(14deg);
+}
+
+.polaroid-images a:nth-child(5n) {
+    -webkit-transform: rotate(-18deg);
+    -moz-transform: rotate(-18deg);
+    transform: rotate(-18deg);
+}
+
+.polaroid-images a:hover {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+    z-index: 10;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
 }

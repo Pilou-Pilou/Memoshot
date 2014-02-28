@@ -6,7 +6,7 @@
  * Time: 23:36
  */
 session_start();
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 
 
 $_SESSION['erreur'] = '';
@@ -61,7 +61,7 @@ if (isset($_POST['pseudo'])) {
 
     if ($_SESSION['erreur'] == '') {
         $_SESSION['erreur'] = -1;
-        if ($_FILES['photo']['tmp_name'] != '')
+        if (isset($_FILES['photo']['tmp_name']))
             $cheminPhoto = envoiImage($_FILES['photo']['tmp_name'], $_FILES['photo']['name']);
         $id = insertionDonnees($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['naissance'], $_POST['mail'], $_POST['sexe'], $cheminPhoto);
         mailEnvoi($_POST['mail'], $id);
@@ -137,8 +137,8 @@ function mailEnvoi($mail, $id)
 // function qui insert une personne dans la base
 function  insertionDonnees($pseudo, $nom, $prenom, $password, $naissance, $mail, $sexe, $photo)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     mysql_query('INSERT INTO users (pseudo,nom,prenom,password,mail,naissance,sexe,photo) VALUES (\'' . $pseudo . '\',\'' . $nom . '\',\'' . $prenom . '\',SHA1(\'' . $password . '\'),\'' . $mail . '\',STR_TO_DATE(\'' . $naissance . '\',\'%d/%m/%Y\'),\'' . $sexe . '\',\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     $id = mysql_insert_id();
@@ -148,8 +148,8 @@ function  insertionDonnees($pseudo, $nom, $prenom, $password, $naissance, $mail,
 // function qui regarde si le pseudo est déjà prix
 function speudoUtilisé($pseudo)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     $req = mysql_query('SELECT * FROM users WHERE pseudo =\'' . $pseudo . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)
@@ -161,8 +161,8 @@ function speudoUtilisé($pseudo)
 // function qui regarde si l adresse mal est deja utilisée
 function mailUtilisé($mail)
 {
-    $conexions = new ConexionsBD();
-    $conexions->conexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     $req = mysql_query('SELECT * FROM `users` WHERE mail =\'' . $mail . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)
@@ -229,7 +229,7 @@ function imageValide($photosize, $photoname)
 // fonction qui envoi l'image sur le serveur
 function envoiImage($photosize, $photoname)
 {
-    $dossier = 'http://205.236.12.51/projet/h2014/equipe3/upload/';
+    $dossier = '../upload/';
     $extension = strrchr($photoname, '.');
 
     $char = 'abcdefghijklmnopqrstuvwxyz0123456789';

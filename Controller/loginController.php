@@ -7,9 +7,9 @@
  */
 
 session_start();
-require('../Config/ConnexionsBD.php');
-$conexions = new ConexionsBD();
-$conexions->conexions();
+require('../Config/ConnexionBD.php');
+$connexions = new ConnexionBD();
+$connexions->connexion();
 
 // recuperation des données du formaulaire
 $idUser = htmlspecialchars($_POST['pseudo'], ENT_QUOTES);
@@ -24,7 +24,7 @@ $row2 = mysql_fetch_array($req2);
 $row = mysql_fetch_array($req);
 
 if (mysql_num_rows($req) == 1) {
-    $_SESSION['pseudo'] = $row['pseudo'];
+    $_SESSION['pseudo_util'] = $row['pseudo'];
     $_SESSION['id'] = $row['id'];
     header('Location: ../view/accueilView.php');
 } else {
@@ -39,5 +39,5 @@ if (mysql_num_rows($req) == 1) {
 }
 
 // fermeture de la connexions
-$conexions->deconnexions();
+$connexions->deconnexion();
 
