@@ -26,7 +26,6 @@
             case 3 :
                 $action = 4;
                 break;
-
         }
     }
 
@@ -94,7 +93,6 @@
             </form>
         </div>
     </div>
-
     <!-- end .container --></div>
 <div class="footer">
     <p align="center">Projet E-Commerce Julien Sergent et Mathieu Molinengo</p>
