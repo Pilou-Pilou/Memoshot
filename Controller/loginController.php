@@ -7,7 +7,7 @@
  */
 
 session_start();
-require('../Config/ConnexionsBD.php');
+require('../Config/ConnexionBD.php');
 $connexions = new ConnexionBD();
 $connexions->connexion();
 

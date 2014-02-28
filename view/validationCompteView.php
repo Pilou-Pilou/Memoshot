@@ -3,7 +3,7 @@
 session_start();
 require_once('../Modele/testSessionModele.php');
 $_SESSION['id'] = $_GET['id'];
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $connexions = new ConnexionBD();
 $connexions->connexion();
 mysql_query('UPDATE users set status="V" where id=\'' . $_SESSION['id'] . '\'')

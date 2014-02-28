@@ -7,7 +7,7 @@ if (isset($_GET['id']))
 else
     $_SESSION['profile'] = $_SESSION['id'];
 
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $connexions = new ConnexionBD();
 $connexions->connexion();
 

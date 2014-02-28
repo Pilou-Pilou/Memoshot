@@ -6,7 +6,7 @@
  * Time: 14:53
  */
 session_start();
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $_SESSION['erreur'] = '';
 $nom = $_POST['nom'];
 $tag1 = $_POST['ht1'];

@@ -32,7 +32,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                require_once('../Config/ConnexionsBD.php');
+                require_once('../Config/ConnexionBD.php');
                 $connexions = new ConnexionBD();
                 $connexions->connexion();
                 $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')

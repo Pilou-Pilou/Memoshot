@@ -8,7 +8,7 @@
 
 session_start();
 require_once('../Modele/testSessionModele.php');
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,7 +39,7 @@ require_once('../Config/ConnexionsBD.php');
         <div class="polaroid-images">
             <?php
             $compteur = 1;
-            $connexions = new ConnexionsBD();
+            $connexions = new ConnexionBD();
             $connexions->connexions();
             $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['id'] . '\'')
             or die ("Impossible de se connecté à la table album" . mysql_error());
