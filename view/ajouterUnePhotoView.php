@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once('../Modele/testSessionModele.php');
 $erreur = '';
@@ -16,7 +15,7 @@ if (isset($_SESSION['erreur'])) {
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>MemoShot - <?php echo $_SESSION['pseudo']; ?></title>
+        <title>MemoShot - <?php echo $_SESSION['pseudo_util']; ?></title>
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
         <script src="../Controller/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
@@ -46,6 +45,18 @@ if (isset($_SESSION['erreur'])) {
                         <td>
                         <span id="sprytextfield1">
                             <input type="text" name="nom" id="nom"/>
+                            <span class="textfieldRequiredMsg">Non complété</span>
+                            <span class="textfieldInvalidFormatMsg">Format non valide.</span>
+                        </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="294" scope="row">
+                            <div align="center"><label for="message">Message</label></div>
+                        </th>
+                        <td>
+                        <span id="sprytextfield2">
+                            <input type="text" name="message" id="message"/>
                             <span class="textfieldRequiredMsg">Non complété</span>
                             <span class="textfieldInvalidFormatMsg">Format non valide.</span>
                         </span>
