@@ -52,8 +52,10 @@
                 else {
                     if ($action == 3)
                         echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre compte n'est pas encore valider !  Cliquez sur le lien contenu dans le mail de confirmation </p>";
-                    else
-                        echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Veuillez rentrer les informations de connexion pour vous connecter</p>";
+                    else {
+                        if ($action == 4)
+                            echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Veuillez rentrer les informations de connexion pour vous connecter</p>";
+                    }
                 }
             }
 
