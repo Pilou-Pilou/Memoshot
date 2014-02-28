@@ -57,7 +57,7 @@ if (isset($_POST['pseudo'])) {
                 <input type="hidden" name="sexe" value="' . $_POST['sexe'] . '">
           </form>';
 
-    $cheminPhoto = '';
+    $cheminPhoto = '../images/default.png';
 
     if ($_SESSION['erreur'] == '') {
         $_SESSION['erreur'] = -1;
