@@ -38,7 +38,7 @@ if (isset($_SESSION['erreur'])) {
 
     <link href="../css/style.css" rel="stylesheet">
 
-    <script src="../controller/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+    <script src="../Controller/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 
     <link href="../css/SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css"/>
 
