@@ -2,7 +2,7 @@
 
 session_start();
 require_once('../Modele/testSessionModele.php');
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $erreur = '';
 $pseudo = '';
 $nom = '';

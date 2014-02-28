@@ -6,7 +6,7 @@
  * Time: 03:14
  */
 
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 // --- Récupération des paramètres POST
 $commentaire = $_POST["commentaire"];
 
