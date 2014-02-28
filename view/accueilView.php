@@ -15,7 +15,7 @@ require_once('../Modele/testSessionModele.php');
     <link href="../css/bootstrapbis.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
-    <?php require_once('../Config/ConnexionsBD.php'); ?>
+    <?php require_once('../Config/ConnexionBD.php'); ?>
 </head>
 <body style="background-color: #d1cece ">
 <div style="height: 10%">
