@@ -48,10 +48,14 @@
                 echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre identifiant n'existe pas ou il y a une erreur dans votre identifiant et/ou mot de passe </p>";
             else {
                 if ($action == 1)
-                    echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Vos venez de vous inscrire pour finaliser l'inscription valider le mail qui va vous étres envoyer dans les 24 heures </p>";
+                    echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Vous venez de vous inscrire pour finaliser l'inscription validez le mail de confirmation dans les 24 heures </p>";
                 else {
                     if ($action == 3)
-                        echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre compte n'est pas encore valider allez dans votre boite mail confirmer votre inscription </p>";
+                        echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Votre compte n'est pas encore valider !  Cliquez sur le lien contenu dans le mail de confirmation </p>";
+                    else {
+                        if ($action == 4)
+                            echo "<p align=\"center\" style=\"color: red; font-style: italic\" >Veuillez rentrer les informations de connexion pour vous connecter</p>";
+                    }
                 }
             }
 

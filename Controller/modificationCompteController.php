@@ -6,7 +6,7 @@
  * Time: 23:36
  */
 session_start();
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 
 
 $_SESSION['erreur'] = '';
@@ -62,8 +62,8 @@ if (isset($_POST['pseudo'])) {
 // function qui insert une personne dans la base
 function  miseajourDonnees($pseudo, $nom, $prenom, $password, $mail, $sexe)
 {
-    $connexions = new ConnexionsBD();
-    $connexions->connexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     mysql_query('UPDATE users set pseudo=\'' . $pseudo . '\',nom=\'' . $nom . '\',prenom=\'' . $prenom . '\',password=SHA1(\'' . $password . '\'),mail=\'' . $mail . '\',sexe=\'' . $sexe . '\' where id=\'' . $_SESSION['id'] . '\' ')
     or die ("Impossible de se connecté à la table users" . mysql_error());
 }
@@ -71,8 +71,8 @@ function  miseajourDonnees($pseudo, $nom, $prenom, $password, $mail, $sexe)
 // function qui regarde si le pseudo est déjà prix
 function speudoUtilisé($pseudo)
 {
-    $conexions = new ConnexionsBD();
-    $conexions->connexions();
+    $conexions = new ConnexionBD();
+    $conexions->connexion();
     $req = mysql_query('SELECT * FROM users WHERE pseudo =\'' . $pseudo . '\' and id !=\'' . $_SESSION['id'] . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)
@@ -84,8 +84,8 @@ function speudoUtilisé($pseudo)
 // function qui regarde si l adresse mal est deja utilisée
 function mailUtilisé($mail)
 {
-    $connexions = new ConnexionsBD();
-    $connexions->connexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     $req = mysql_query('SELECT * FROM `users` WHERE mail =\'' . $mail . '\' and id !=\'' . $_SESSION['id'] . '\'')
     or die ("Impossible de se connecté à la table users" . mysql_error());
     if (mysql_num_rows($req) != 0)

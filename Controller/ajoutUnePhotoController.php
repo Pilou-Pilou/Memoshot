@@ -6,7 +6,7 @@
  * Time: 14:53
  */
 session_start();
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $_SESSION['erreur'] = '';
 $nom = $_POST['nom'];
 $tag1 = $_POST['ht1'];
@@ -35,8 +35,8 @@ header('Location: ../view/ajouterUnePhotoView.php');
 
 function  insertionPhoto($nom, $tag1, $tag2, $tag3, $tag4, $tag5, $photo)
 {
-    $connexions = new ConnexionsBD();
-    $connexions->connexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     mysql_query('INSERT INTO album (id_utilisateur,message,tag1,tag2,tag3,tag4,tag5,photo) VALUES (\'' . $_SESSION['id'] . '\',"' . $nom . '","' . $tag1 . '","' . $tag2 . '","' . $tag3 . '","' . $tag4 . '","' . $tag5 . '",\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table album" . mysql_error());
 }
@@ -75,5 +75,5 @@ function envoiImage($photosize, $photoname)
     if (move_uploaded_file($photosize, $dossier . $fichier . $extension)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         return $dossier . $fichier . $extension;
     else
-        return '';
+        return '../upload/';
 }

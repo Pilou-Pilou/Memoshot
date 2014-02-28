@@ -7,9 +7,9 @@ if (isset($_GET['id']))
 else
     $_SESSION['profile'] = $_SESSION['id'];
 
-require_once('../Config/ConnexionsBD.php');
-$connexions = new ConnexionsBD();
-$connexions->connexions();
+require_once('../Config/ConnexionBD.php');
+$connexions = new ConnexionBD();
+$connexions->connexion();
 
 // recuperartion des informations concernat le profil de la personne
 $req = mysql_query('SELECT * FROM users us join abonement abo on abo.id_abo=us.abonement WHERE id =\'' . $_SESSION['profile'] . '\'')

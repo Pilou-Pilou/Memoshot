@@ -30,8 +30,8 @@ require_once('../Modele/testSessionModele.php');
     <table style="width: 100%;">
         <?php
         $moisText = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-        $connexions = new ConnexionsBD();
-        $connexions->connexions();
+        $connexions = new ConnexionBD();
+        $connexions->connexion();
         $req = mysql_query('SELECT * FROM  users where id=' . $_SESSION['id'])
         or die ("Impossible de se connecté à la table album" . mysql_error());
         $valeur = mysql_fetch_assoc($req);

@@ -2,7 +2,7 @@
 
 session_start();
 require_once('../Modele/testSessionModele.php');
-require_once('../Config/ConnexionsBD.php');
+require_once('../Config/ConnexionBD.php');
 $erreur = '';
 $pseudo = '';
 $nom = '';
@@ -26,8 +26,8 @@ else
     $erreur = '';
 
 if (!isset($_SESSION['naissance'])) {
-    $connexions = new ConnexionsBD();
-    $connexions->connexions();
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
     $req = mysql_query('SELECT * FROM  users where id=' . $_SESSION['id'])
     or die ("Impossible de se connecté à la table album" . mysql_error());
     $valeur = mysql_fetch_assoc($req);

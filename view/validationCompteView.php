@@ -3,9 +3,9 @@
 session_start();
 require_once('../Modele/testSessionModele.php');
 $_SESSION['id'] = $_GET['id'];
-require_once('../Config/ConnexionsBD.php');
-$connexions = new ConnexionsBD();
-$connexions->connexions();
+require_once('../Config/ConnexionBD.php');
+$connexions = new ConnexionBD();
+$connexions->connexion();
 mysql_query('UPDATE users set status="V" where id=\'' . $_SESSION['id'] . '\'')
 or die ("Impossible de se connecté à la table users" . mysql_error());
 
