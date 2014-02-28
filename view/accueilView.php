@@ -56,7 +56,7 @@ require_once('../Modele/testSessionModele.php');
                         ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '
                          Avec @' . $valeur['tag1'] . '</p>
 
-                        <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:200px;height 100px;" src="' . $valeur['photo'] . '"></p>';
+                        <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:500px;height 50px;" src="' . $valeur['photo'] . '"></p>';
 
             while ($val = mysql_fetch_assoc($req2)) {
                 $date_explosee = explode("-", $val['date']);
@@ -115,3 +115,5 @@ require_once('../Modele/testSessionModele.php');
 </html>
 
 <script language="javascript" src="../js/accueil.js"></script>
+
+

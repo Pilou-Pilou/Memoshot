@@ -9,6 +9,7 @@ session_start();
 require_once('../Config/ConnexionBD.php');
 $_SESSION['erreur'] = '';
 $nom = $_POST['nom'];
+$message = $_POST['description'];
 $tag1 = $_POST['ht1'];
 $tag2 = $_POST['h2'];
 $tag3 = $_POST['h3'];
@@ -27,18 +28,21 @@ if (!isset($_FILES['photo'])) {
 if ($_SESSION['erreur'] == '') {
     $_SESSION['erreur'] = -1;
     $cheminPhoto = envoiImage($_FILES['photo']['tmp_name'], $_FILES['photo']['name']);
-    insertionPhoto($nom, $tag1, $tag2, $tag3, $tag4, $tag5, $cheminPhoto);
+    insertionPhoto($nom, $message, $tag1, $tag2, $tag3, $tag4, $tag5, $cheminPhoto);
 }
 
 header('Location: ../view/ajouterUnePhotoView.php');
 
 
-function  insertionPhoto($nom, $tag1, $tag2, $tag3, $tag4, $tag5, $photo)
+function  insertionPhoto($nom, $message, $tag1, $tag2, $tag3, $tag4, $tag5, $photo)
 {
     $connexions = new ConnexionBD();
     $connexions->connexion();
-    mysql_query('INSERT INTO album (id_utilisateur,message,tag1,tag2,tag3,tag4,tag5,photo) VALUES (\'' . $_SESSION['id'] . '\',"' . $nom . '","' . $tag1 . '","' . $tag2 . '","' . $tag3 . '","' . $tag4 . '","' . $tag5 . '",\'' . $photo . '\')')
+    mysql_query('INSERT INTO album (id_utilisateur,nom,message,tag1,tag2,tag3,tag4,tag5,photo) VALUES (\'' . $_SESSION['id'] . '\',"' . $nom . '","' . $message . '","' . $tag1 . '","' . $tag2 . '","' . $tag3 . '","' . $tag4 . '","' . $tag5 . '",\'' . $photo . '\')')
     or die ("Impossible de se connecté à la table album" . mysql_error());
+    if (isset($_POST['Profil']))
+        mysql_query('UPDATE users set photo_profil="' . $photo . '" where id="' . $_SESSION['id'] . '"')
+        or die ("Impossible de se connecté à la table album" . mysql_error());
 }
 
 
@@ -75,5 +79,5 @@ function envoiImage($photosize, $photoname)
     if (move_uploaded_file($photosize, $dossier . $fichier . $extension)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         return $dossier . $fichier . $extension;
     else
-        return '../upload/';
+        return '';
 }
