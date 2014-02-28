@@ -1,9 +1,5 @@
 <?php
 
-
-<?
-php
-
 session_start();
 
 require_once('../Modele/testSessionModele.php');
