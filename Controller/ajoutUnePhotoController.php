@@ -15,7 +15,7 @@ $tag2 = $_POST['h2'];
 $tag3 = $_POST['h3'];
 $tag4 = $_POST['h4'];
 $tag5 = $_POST['h5'];
-if ('' == $_FILES['photo']['tmp_name']) {
+if ($_FILES['photo']['tmp_name'] == '') {
     $_SESSION['erreur'] = $_SESSION['erreur'] . ' Votre devez choisir une photo<br> Vous devez uploader un fichier de type png, gif, jpg, jpeg et de taille maximun 2 Mo' . '<br>';
 } else {
     if ($_FILES['photo']['tmp_name'] != '') {

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Julien
- * Date: 07/02/14
- * Time: 09:48
- */
 session_start();
 require_once('../Modele/testSessionModele.php');
 ?>
@@ -25,7 +19,21 @@ require_once('../Modele/testSessionModele.php');
 </div>
 
 <div id="separation"></div>
-<div id="colonnegauche"><h1 align="center"><b>Mes amis</b></h1></div>
+<div id="colonnegauche"><h1 align="center"><b>Mes amis</b></h1>
+    <?php
+    $connexions = new ConnexionBD();
+    $connexions->connexion();
+    $req1 = mysql_query('SELECT id_amis_1 as id_amis,pseudo,photo_profil FROM amis am join users us on am.id_amis_1=us.id  where id_amis_2=' . $_SESSION['id'] . ' and status_amitier=1 union SELECT id_amis_2 as id_amis,pseudo,photo_profil FROM amis am join users us on am.id_amis_2=us.id where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1')
+    or die ("Impossible de se connecté à la table album" . mysql_error());
+    while ($valeur = mysql_fetch_assoc($req1)) {
+        echo '&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id_amis'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id_amis'] . '"><b>' . $valeur['pseudo'] . '</a></b>';
+        echo '<br>';
+        echo '<br>';
+    }
+    ?>
+
+
+</div>
 <div id="colonnemilieu">
     <table style="width: 100%;">
         <?php
@@ -52,7 +60,7 @@ require_once('../Modele/testSessionModele.php');
             echo '<tr>
                 <td>
                     <div class="poster">
-                        <p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="' . dirname($_SERVER['PHP_SELF']) . '/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette publication le
+                        <p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette publication le
                         ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '
                          Avec @' . $valeur['tag1'] . '</p>
 

@@ -10,13 +10,7 @@ $prenom = '';
 $mail = '';
 $sexe = '';
 
-if (isset($_POST['pseudo'])) {
-    $pseudo = $_POST['pseudo'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $mail = $_POST['mail'];
-    $sexe = $_POST['sexe'];
-}
+
 if (isset($_SESSION['erreur']))
     if ($_SESSION['erreur'] == -1)
         $erreur = '';
@@ -25,8 +19,8 @@ if (isset($_SESSION['erreur']))
 else
     $erreur = '';
 
-if (!isset($_SESSION['naissance'])) {
-    $connexions = new ConnexionBD();
+
+$connexions = new ConnexionBD();
     $connexions->connexion();
     $req = mysql_query('SELECT * FROM  users where id=' . $_SESSION['id'])
     or die ("Impossible de se connecté à la table album" . mysql_error());
@@ -36,7 +30,6 @@ if (!isset($_SESSION['naissance'])) {
     $_SESSION['prenom'] = $valeur['prenom'];
     $_SESSION['mail'] = $valeur['mail'];
     $_SESSION['sexe'] = $valeur['sexe'];
-}
 
 
 $date_explosee = explode("-", $_SESSION['naissance']);
