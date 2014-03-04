@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('../Modele/testSessionModele.php');
+require_once('../Controller/config.php');
 ?>
 <!DOCTYPE html>
 <html>
