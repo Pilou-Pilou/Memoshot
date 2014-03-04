@@ -1,5 +1,5 @@
 <?php
-require_once('./lib/Stripe.php');
+require_once('../Config/stripe-php-1.11.0/lib/Stripe.php');
 
 $stripe = array(
     "secret_key" => "sk_test_zLVZghtNxTb5iVRNW2rPaeJc",
