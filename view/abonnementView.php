@@ -31,15 +31,19 @@ require_once('../Modele/testSessionModele.php');
                         <span class="glyphicon glyphicon-star-empty"></span>
                         <span class="glyphicon glyphicon-star-empty"></span>
                         <span class="glyphicon glyphicon-star-empty"></span>
-                        &nbsp Abonement Basique </h3>
+                        &nbsp Abonnement Premium Bronze</h3>
 
-                    <p>Vos publications seront mis en avant une fois par mois</p>
+                    <p>Vos publications seront mises en avant une fois par mois</p>
 
-                    <p align="center"><br>
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                        <input type="hidden" name="montant" value="50">
+
+                        <p align="center"><br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="<?php echo $stripe['publishable_key']; ?>"
                                 data-description="Paiement :) "></script>
                     </p>
+                    </form>
                 </div>
             </td>
         </tr>
@@ -56,15 +60,20 @@ require_once('../Modele/testSessionModele.php');
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star-empty"></span>
                         <span class="glyphicon glyphicon-star-empty"></span>
-                        &nbsp Abonement Gold</h3>
+                        &nbsp Abonnement Premium Silver</h3>
 
-                    <p>Vos publications seront mis en avant une fois par semaine</p>
+                    <p>Vos publications seront mises en avant une fois par semaine</p>
 
-                    <p align="center"><br>
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                        <input type="hidden" name="montant" value="75">
+
+                        <p align="center"><br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="<?php echo $stripe['publishable_key']; ?>"
                                 data-description="Paiement :) "></script>
-                    </p>
+
+                        </p>
+                    </form>
                 </div>
             </td>
         </tr>
@@ -81,14 +90,18 @@ require_once('../Modele/testSessionModele.php');
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
-                        &nbsp Abonement Gold Plus</h3>
+                        &nbsp Abonnement Premium Gold</h3>
 
-                    <p>Vos publications seront mis en avant une fois par jour</p>
+                    <p>Vos publications seront mises en avant une fois par jour</p>
 
-                    <p align="center"><br>
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                        <input type="hidden" name="montant" value="100">
+
+                        <p align="center"><br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="<?php echo $stripe['publishable_key']; ?>"
                                 data-description="Paiement :) "></script>
+                    </form>
                     </p>
                 </div>
             </td>
