@@ -41,7 +41,7 @@ require_once('../Config/ConnexionBD.php');
             $compteur = 1;
             $connexions = new ConnexionBD();
             $connexions->connexion();
-            $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['id'] . '\'')
+            $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['profile'] . '\'')
             or die ("Impossible de se connecté à la table album" . mysql_error());
             while ($valeur = mysql_fetch_assoc($req)) {
                 $image = $valeur['photo'];
