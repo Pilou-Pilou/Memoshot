@@ -35,14 +35,14 @@ require_once('../Modele/testSessionModele.php');
 
                     <p>Vos publications seront mises en avant une fois par mois</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                    <form action="../Controller/charge.php" method="post">
                         <input type="hidden" name="montant" value="50">
 
                         <p align="center"><br>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="<?php echo $stripe['publishable_key']; ?>"
-                                data-description="Paiement :) "></script>
-                    </p>
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<?php echo $stripe['publishable_key']; ?>"
+                                    data-description="Paiement :) "></script>
+                        </p>
                     </form>
                 </div>
             </td>
@@ -64,13 +64,13 @@ require_once('../Modele/testSessionModele.php');
 
                     <p>Vos publications seront mises en avant une fois par semaine</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                    <form action="../Controller/charge.php" method="post">
                         <input type="hidden" name="montant" value="75">
 
                         <p align="center"><br>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="<?php echo $stripe['publishable_key']; ?>"
-                                data-description="Paiement :) "></script>
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<?php echo $stripe['publishable_key']; ?>"
+                                    data-description="Paiement :) "></script>
 
                         </p>
                     </form>
@@ -94,13 +94,13 @@ require_once('../Modele/testSessionModele.php');
 
                     <p>Vos publications seront mises en avant une fois par jour</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                    <form action="../Controller/charge.php" method="post">
                         <input type="hidden" name="montant" value="100">
 
                         <p align="center"><br>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="<?php echo $stripe['publishable_key']; ?>"
-                                data-description="Paiement :) "></script>
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<?php echo $stripe['publishable_key']; ?>"
+                                    data-description="Paiement :) "></script>
                     </form>
                     </p>
                 </div>
