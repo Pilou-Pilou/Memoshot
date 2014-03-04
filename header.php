@@ -75,7 +75,7 @@
                         <li><a href="../view/modificationCompteView.php">Modification
                                 Compte</a></li>
                         <li class="divider"></li>
-                        <li><a href="../view/abonementView.php">Abonnement</a></li>
+                        <li><a href="../view/abonnementView.php">Abonnement</a></li>
                     </ul>
                 </li>
             </ul>
