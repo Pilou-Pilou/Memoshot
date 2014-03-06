@@ -12,7 +12,7 @@ $connexions = new ConnexionBD();
 $connexions->connexion();
 
 // recuperartion des informations concernat le profil de la personne
-$req = mysql_query('SELECT * FROM users us join abonement abo on abo.id_abo=us.abonement WHERE id =\'' . $_SESSION['profile'] . '\'')
+$req = mysql_query('SELECT * FROM users us join abonnement abo on abo.id_abo=us.abonnement WHERE id =\'' . $_SESSION['profile'] . '\'')
 or die ("Impossible de se connecté à la table users" . mysql_error());
 $row = mysql_fetch_array($req);
 $_SESSION['pseudo'] = $row['pseudo'];
@@ -26,7 +26,7 @@ if ($row['sexe'] == 'M')
 else
     $_SESSION['sexe'] = 'Féminin';
 $_SESSION['mail'] = $row['mail'];
-$_SESSION['abonement'] = $row['type_abonement'];
+$_SESSION['abonnement'] = $row['type_abonnement'];
 $_SESSION['naissance'] = $row['naissance'];
 $date_explosee = explode("-", $_SESSION['naissance']);
 $jour = $date_explosee[2];
@@ -118,7 +118,7 @@ if ($_SESSION['id'] != $_SESSION['profile']) {
 
             <p align="center">Mail : <?php echo $_SESSION['mail']; ?></p>
 
-            <p align="center">Abonnement : <?php echo $_SESSION['abonement']; ?></p></div>
+            <p align="center">Abonnement : <?php echo $_SESSION['abonnement']; ?></p></div>
 
 
         <p align="center">&nbsp;</p>
