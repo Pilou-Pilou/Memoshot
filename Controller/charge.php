@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/config.php');
+require_once('../Config/ConnexionBD.php');
 
 $token = $_POST['stripeToken'];
 $montant = $_POST['montant'];
@@ -15,6 +16,9 @@ $charge = Stripe_Charge::create(array(
     'amount' => $montant,
     'currency' => 'cad'
 ));
+$connexions = new ConnexionBD();
+$connexions->connexion();
+
 $req1 = "INSERT INTO abonnement (type_abonnement) VALUES(" . $POST['abonnement'] . ");";
 $req2 = "UPDATE users SET abonnement= " . mysql_insert_id() . "WHERE id=" . $_SESSION['id'] . ";";
 $result1 = mysql_query($req1);
