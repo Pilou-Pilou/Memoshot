@@ -15,8 +15,8 @@ $charge = Stripe_Charge::create(array(
     'amount' => $montant,
     'currency' => 'cad'
 ));
-$req1 = "INSERT INTO 'Abonnement' VALUES" . $POST['abonnement'];
-$req2 = "UPDATE users.abonnement= " . mysql_insert_id() . "WHERE id=" . $_SESSION['id'];
+$req1 = "INSERT INTO abonnement (type_abonnement) VALUES(" . $POST['abonnement'] . ");";
+$req2 = "UPDATE users SET abonnement= " . mysql_insert_id() . "WHERE id=" . $_SESSION['id'] . ";";
 $result1 = mysql_query($req1);
 if (!$result1) {
     echo "ça marche pas INSERT" . mysql_error();
