@@ -28,16 +28,17 @@ require_once('../Controller/config.php');
                      onmouseout="document.getElementById('abo1').style.backgroundColor='rgb(237, 234, 255)' "
                      onmouseover="document.getElementById('abo1').style.backgroundColor='rgb(255, 186, 93)' ">&nbsp<h3>
                         <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        &nbsp Abonnement Premium Bronze</h3>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        &nbsp Abonnement Premium Gold</h3>
 
-                    <p>Vos publications seront mises en avant une fois par mois</p>
+                    <p>Vos publications seront mises en avant une fois par jour</p>
 
-                    <form action="../Controller/charge.php" method="post">
-                        <input type="hidden" name="montant" value="50">
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                        <input type="hidden" name="montant" value="100">
+                        <input type="hidden" name="abonnement" value="1">
 
                         <p align="center"><br>
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -65,8 +66,9 @@ require_once('../Controller/config.php');
 
                     <p>Vos publications seront mises en avant une fois par semaine</p>
 
-                    <form action="../Controller/charge.php" method="post">
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
                         <input type="hidden" name="montant" value="75">
+                        <input type="hidden" name="abonnement" value="2">
 
                         <p align="center"><br>
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -86,17 +88,18 @@ require_once('../Controller/config.php');
                 <div id="abo3" style="cursor: pointer" class="poster" onclick=""
                      onmouseout="document.getElementById('abo3').style.backgroundColor='rgb(237, 234, 255)' "
                      onmouseover="document.getElementById('abo3').style.backgroundColor='rgb(255, 186, 93)' ">&nbsp<h3>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        &nbsp Abonnement Premium Gold</h3>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        &nbsp Abonnement Premium Bronze</h3>
 
-                    <p>Vos publications seront mises en avant une fois par jour</p>
+                    <p>Vos publications seront mises en avant une fois par mois</p>
 
-                    <form action="../Controller/charge.php" method="post">
-                        <input type="hidden" name="montant" value="100">
+                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
+                        <input type="hidden" name="montant" value="50">
+                        <input type="hidden" name="abonnement" value="3">
 
                         <p align="center"><br>
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
