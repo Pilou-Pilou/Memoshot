@@ -36,8 +36,8 @@ require_once('../Controller/config.php');
 
                     <p>Vos publications seront mises en avant une fois par jour</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
-                        <input type="hidden" name="montant" value="100">
+                    <form action="../Controller/charge.php" method="post">
+                    <input type="hidden" name="montant" value="100">
                         <input type="hidden" name="abonnement" value="1">
 
                         <p align="center"><br>
@@ -66,8 +66,8 @@ require_once('../Controller/config.php');
 
                     <p>Vos publications seront mises en avant une fois par semaine</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
-                        <input type="hidden" name="montant" value="75">
+                    <form action="../Controller/charge.php" method="post">
+                    <input type="hidden" name="montant" value="75">
                         <input type="hidden" name="abonnement" value="2">
 
                         <p align="center"><br>
@@ -97,8 +97,8 @@ require_once('../Controller/config.php');
 
                     <p>Vos publications seront mises en avant une fois par mois</p>
 
-                    <form action="../Memoshot/equipe-3/Controller/charge.php" method="post">
-                        <input type="hidden" name="montant" value="50">
+                    <form action="../Controller/charge.php" method="post">
+                    <input type="hidden" name="montant" value="50">
                         <input type="hidden" name="abonnement" value="3">
 
                         <p align="center"><br>
