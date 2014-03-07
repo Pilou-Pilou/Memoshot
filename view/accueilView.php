@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once('../Modele/testSessionModele.php');
+require_once('../Modele/cryptModele.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,7 @@ require_once('../Modele/testSessionModele.php');
     <?php require_once('../Config/ConnexionBD.php'); ?>
 </head>
 <body style="background-color: #d1cece ">
+
 <div style="height: 10%">
     <?php
     require_once('../header.php');
@@ -35,6 +38,7 @@ require_once('../Modele/testSessionModele.php');
 
 </div>
 <div id="colonnemilieu">
+
     <table style="width: 100%;">
         <?php
         $moisText = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
@@ -44,9 +48,28 @@ require_once('../Modele/testSessionModele.php');
         or die ("Impossible de se connecté à la table album" . mysql_error());
         $valeur = mysql_fetch_assoc($req);
         $photo_profil = $valeur['photo_profil'];
-        $req1 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
-        or die ("Impossible de se connecté à la table album" . mysql_error());
-        while ($valeur = mysql_fetch_assoc($req1)) {
+        if (isset($_GET['rechercher'])) {
+            $scryp = new cryptModele();
+            // On le décrypte
+            $message_decrypte = mcrypt_decrypt(MCRYPT_3DES, $_SESSION['key'], $_GET['rechercher'], MCRYPT_MODE_NOFB, $_SESSION['iv']);
+            $recherche = $message_decrypte;
+            if ($recherche != '') {
+                $req1 = 'SELECT * FROM album al join users us on us.id=al.id_utilisateur where upper(al.tag1) like upper("%' . $recherche . '%") or upper(al.tag2) like upper("%' . $recherche . '%") or upper(al.tag3) like upper("%' . $recherche . '%") or upper(al.tag4) like upper("%' . $recherche . '%") or upper(al.tag5) like upper("%' . $recherche . '%")';
+                $req2 = mysql_query($req1)
+                or die ("Impossible de se connecté à la table album" . mysql_error());
+                if (mysql_num_rows($req2) == 0) {
+                    $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+                    or die ("Impossible de se connecté à la table album" . mysql_error());
+                }
+            } else {
+                $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+                or die ("Impossible de se connecté à la table album" . mysql_error());
+            }
+        } else {
+            $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+            or die ("Impossible de se connecté à la table album" . mysql_error());
+        }
+        while ($valeur = mysql_fetch_assoc($req2)) {
             $date_explosee = explode("-", $valeur['date']);
             $annee = $date_explosee[0];
             $mois = $date_explosee[1];
@@ -62,7 +85,19 @@ require_once('../Modele/testSessionModele.php');
                     <div class="poster">
                         <p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette publication le
                         ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '
-                         Avec @' . $valeur['tag1'] . '</p>
+                         Avec @' . $valeur['tag1'];
+
+            if ($valeur['tag2'] != '')
+                echo ', @' . $valeur['tag2'];
+            if ($valeur['tag3'] != '')
+                echo ', @' . $valeur['tag3'];
+            if ($valeur['tag4'] != '')
+                echo ', @' . $valeur['tag4'];
+            if ($valeur['tag5'] != '')
+                echo ', @' . $valeur['tag5'];
+
+
+            echo '</p>
 
                         <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:500px;height 50px;" src="' . $valeur['photo'] . '"></p>';
 
