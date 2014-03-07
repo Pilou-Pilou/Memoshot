@@ -294,3 +294,9 @@ a.cancel:hover {
     -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
 }
+
+.divpseudo {
+    border-bottom: 2px rgb(155, 160, 155) solid;
+    border-top: 2px rgb(155, 160, 155) solid;
+    cursor: pointer
+}

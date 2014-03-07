@@ -1,11 +1,28 @@
+<?php
+require_once('../Modele/cryptModele.php');
+if (isset($_POST['recherche'])) {
+    if ($_POST['recherche'] != '') {
+        require_once('../Modele/cryptModele.php');
+        $scryp = new cryptModele();
+        $message_crypte = mcrypt_encrypt(MCRYPT_3DES, $scryp->cle, $_POST['recherche'], MCRYPT_MODE_NOFB, $scryp->iv);
+        $_SESSION['key'] = $scryp->cle;
+        $_SESSION['iv'] = $scryp->iv;
+        header('Location: ../view/accueilView.php?rechercher=' . $message_crypte);
+    } else {
+        header('Location: ../view/accueilView.php');
+    }
+}
+?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="../js/bootstrap.js"></script>
+    <?php require_once('../Config/ConnexionBD.php'); ?>
 </head>
 
-
+<body>
 <nav style="z-index: 9999;position: fixed;width: 100%;" class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,9 +42,10 @@
                 <li><a href="../view/accueilView.php"> <span
                             class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" id="recherche" class="form-control" placeholder="Search">
+            <form action="" method="post" class="navbar-form navbar-left" autocomplete="off">
+            <div class="form-group">
+                    <input type="text" name="recherche" id="recherche" class="form-control" placeholder="Search"
+                           onkeyup="window.setTimeout('refreshList(pseudo);',1);">
                 </div>
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>&nbspResearch
                 </button>
@@ -83,4 +101,122 @@
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
+
 </nav>
+<div id="liste"
+     style="border: 2px rgb(155, 160, 155) solid;position:absolute;width:11.3%;left:212px;top:42px;background-color:rgb(237, 234, 255);z-index: 100000; display: none">
+</div>
+</body>
+
+
+<?php
+
+$pseudo = array();
+$divpseudo = array();
+$htag = array();
+$divhtag = array();
+$i = 0;
+
+$connexions = new ConnexionBD();
+$connexions->connexion();
+$req1 = mysql_query('SELECT id,pseudo,photo_profil FROM users')
+or die ("Impossible de se connecté à la table album" . mysql_error());
+while ($valeur = mysql_fetch_assoc($req1)) {
+    $pseudo[$i] = $valeur['pseudo'];
+    $divpseudo[$i] = '<div class="divpseudo" id="' . $i . '" onclick="location.href=\'../view/visualisationCompteView.php?id=' . $valeur['id'] . '\'" onmouseout="document.getElementById("' . $i . '").style.backgroundColor=\'rgb(237, 234, 255)\' "
+                     onmouseover="document.getElementById("' . $i . '").style.backgroundColor=\'rgb(255, 186, 93)\' "><a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;30px;width: 30px;" src=' . $valeur['photo_profil'] . '></a>&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '">' . $valeur['pseudo'] . '</a></div>';
+    $i++;
+}
+
+$i = 0;
+$req1 = mysql_query('SELECT tag1 as tag FROM album union SELECT tag2 as tag FROM album union SELECT tag3 as tag FROM album union SELECT tag4 as tag FROM album union SELECT tag5 as tag FROM album')
+or die ("Impossible de se connecté à la table album" . mysql_error());
+while ($valeur = mysql_fetch_assoc($req1)) {
+    $htag[$i] = $valeur['tag'];
+    $divhtag[$i] = '<div align="center" class="divpseudo" id="' . $valeur['tag'] . '" onmouseout="document.getElementById("' . $valeur['tag'] . '").style.backgroundColor=\'rgb(237, 234, 255)\' "
+                     onmouseover="document.getElementById("' . $valeur['tag'] . '").style.backgroundColor=\'rgb(255, 186, 93)\' onclick="fillInput1(' . $i . ')">' . $valeur['tag'] . '</div>';
+    $i++;
+}
+
+
+
+?>
+
+
+
+<script>
+
+    var selIndex = 0;
+    var nbMatch = 0;
+    var pseudo = new Array();
+    var divpseudo = new Array();
+    var htag = new Array();
+    var divhtag = new Array();
+    var content = '';
+    var old = '';
+
+    pseudo = <?php echo json_encode($pseudo) ?>;
+    divpseudo = <?php echo json_encode($divpseudo) ?>;
+    htag = <?php echo json_encode($htag) ?>;
+    divhtag = <?php echo json_encode($divhtag) ?>;
+
+
+    function refreshList(tab) {
+
+        // si la valeur est différente de celle taper précedement on rentre dans la boucle
+        if (document.getElementById('recherche').value != old) {
+
+
+            old = document.getElementById('recherche').value;
+            document.getElementById('liste').innerHTML = '';
+            if (document.getElementById('recherche').value.length > 0) {
+
+                nbMatch = 0;
+                content = '<div align="center" style="border-top: 2px  rgb(155, 160, 155) solid;border-bottom: 2px  rgb(155, 160, 155) solid;background-color: greenyellow"><b>Personne</b></div>';
+                for (var i = 0; i < tab.length; i++) {
+
+                    // je prend dans la case i je met le meme nombre de caractyere entrer dans la zone texte en majuscule et je compare ces caractere a la zone texte
+                    if (tab[i].slice(0, document.getElementById('recherche').value.length).toLowerCase() == document.getElementById('recherche').value.toLowerCase()) {
+                        nbMatch++;
+                        content += divpseudo[i];
+
+
+                    }
+                }
+                content += '<div align="center" style="border-top: 2px  rgb(155, 160, 155) solid;border-bottom: 2px  rgb(155, 160, 155) solid;background-color: greenyellow"><b>Tag</b></div>';
+
+
+                for (var i = 0; i < htag.length; i++) {
+
+                    // je prend dans la case i je met le meme nombre de caractyere entrer dans la zone texte en majuscule et je compare ces caractere a la zone texte
+                    if (htag[i].slice(0, document.getElementById('recherche').value.length).toLowerCase() == document.getElementById('recherche').value.toLowerCase()) {
+                        nbMatch++;
+
+                        content += divhtag[i];
+
+
+                    }
+                }
+
+
+                if (nbMatch) {
+                    document.getElementById('liste').innerHTML = content;
+                    document.getElementById('liste').style.display = 'block';
+                    selIndex = 0;
+                }
+                else
+                    document.getElementById('liste').style.display = 'none';
+            }
+            else {
+                document.getElementById('liste').style.display = 'none';
+            }
+        }
+    }
+
+    function fillInput1(i) {
+        document.getElementById('recherche').value = htag[i];
+        document.getElementById('liste').style.display = 'none';
+        document.getElementById('recherche').focus();
+    }
+
+</script>
