@@ -64,7 +64,7 @@ require_once('../Modele/cryptModele.php');
                                 union
                                 select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
                                 union
-                                select id from users where id=47
+                                select id from users where id=' . $_SESSION['id'] . '
                                 ) order by al.date desc')
                     or die ("Impossible de se connecté à la table album" . mysql_error());
                 }
@@ -75,7 +75,7 @@ require_once('../Modele/cryptModele.php');
                                 union
                                 select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
                                 union
-                                select id from users where id=47
+                                select id from users where id=' . $_SESSION['id'] . '
                                 ) order by al.date desc')
                 or die ("Impossible de se connecté à la table album" . mysql_error());
             }
@@ -86,7 +86,7 @@ require_once('../Modele/cryptModele.php');
                                 union
                                 select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
                                 union
-                                select id from users where id=47
+                                select id from users where id=' . $_SESSION['id'] . '
                                 ) order by al.date desc')
             or die ("Impossible de se connecté à la table album" . mysql_error());
         }
