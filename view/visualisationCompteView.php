@@ -2,17 +2,18 @@
 
 session_start();
 require_once('../Modele/testSessionModele.php');
+
 if (isset($_GET['id']))
     $_SESSION['profile'] = $_GET['id'];
 else
     $_SESSION['profile'] = $_SESSION['id'];
 
+
 require_once('../Config/ConnexionBD.php');
 $connexions = new ConnexionBD();
 $connexions->connexion();
-
 // recuperartion des informations concernat le profil de la personne
-$req = mysql_query('SELECT * FROM users us join abonnement abo on abo.id_abo=us.abonnement WHERE id =\'' . $_SESSION['profile'] . '\'')
+$req = mysql_query('SELECT * FROM users us join abonnement abo on abo.id_abonnement=us.abonnement WHERE id =\'' . $_SESSION['profile'] . '\'')
 or die ("Impossible de se connecté à la table users" . mysql_error());
 $row = mysql_fetch_array($req);
 $_SESSION['pseudo'] = $row['pseudo'];
@@ -26,12 +27,25 @@ if ($row['sexe'] == 'M')
 else
     $_SESSION['sexe'] = 'Féminin';
 $_SESSION['mail'] = $row['mail'];
-$_SESSION['abonnement'] = $row['type_abonnement'];
+switch ($row['type_abonnement']) {
+    case 0:
+        $_SESSION['abonnement'] = ' Classique (Gratuit)';
+        break;
+    case 1:
+        $_SESSION['abonnement'] = ' Premiun Gold';
+        break;
+    case 2:
+        $_SESSION['abonnement'] = ' Premium Silver';
+        break;
+    case 3:
+        $_SESSION['abonnement'] = ' Premiun Bronze';
+        break;
+}
 $_SESSION['naissance'] = $row['naissance'];
 $date_explosee = explode("-", $_SESSION['naissance']);
-$jour = $date_explosee[2];
-$mois = $date_explosee[1];
 $annee = $date_explosee[0];
+$mois = $date_explosee[1];
+$jour = $date_explosee[2];
 $moisText = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 $mois = $moisText[$mois - 1];
 
