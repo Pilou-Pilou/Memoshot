@@ -104,7 +104,7 @@ if (isset($_POST['recherche'])) {
 
 </nav>
 <div id="liste"
-     style="border: 2px rgb(155, 160, 155) solid;position:absolute;width:11.3%;left:212px;top:42px;background-color:rgb(237, 234, 255);z-index: 100000; display: none">
+     style="border: 2px rgb(155, 160, 155) solid;position:fixed;width:172px;left:212px;top:42px;background-color:rgb(237, 234, 255);z-index: 100000; display: none">
 </div>
 </body>
 

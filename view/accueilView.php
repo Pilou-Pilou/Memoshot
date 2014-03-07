@@ -58,15 +58,36 @@ require_once('../Modele/cryptModele.php');
                 $req2 = mysql_query($req1)
                 or die ("Impossible de se connecté à la table album" . mysql_error());
                 if (mysql_num_rows($req2) == 0) {
-                    $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+                    $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
+                                (
+                                select id_amis_1 from amis where id_amis_2=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id from users where id=47
+                                ) order by al.date desc')
                     or die ("Impossible de se connecté à la table album" . mysql_error());
                 }
             } else {
-                $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+                $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
+                                (
+                                select id_amis_1 from amis where id_amis_2=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id from users where id=47
+                                ) order by al.date desc')
                 or die ("Impossible de se connecté à la table album" . mysql_error());
             }
         } else {
-            $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur')
+            $req2 = mysql_query('SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
+                                (
+                                select id_amis_1 from amis where id_amis_2=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id_amis_2 from amis where id_amis_1=' . $_SESSION['id'] . ' and status_amitier=1
+                                union
+                                select id from users where id=47
+                                ) order by al.date desc')
             or die ("Impossible de se connecté à la table album" . mysql_error());
         }
         while ($valeur = mysql_fetch_assoc($req2)) {
