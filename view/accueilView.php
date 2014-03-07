@@ -78,7 +78,7 @@ require_once('../Modele/cryptModele.php');
             $date_explosee = explode(":", $date_explosee[1]);
             $heure = $date_explosee[0];
             $minute = $date_explosee[1];
-            $req2 = mysql_query('SELECT * FROM commentaires co join users us on us.id=co.id_auteur where id_publication=' . $valeur['id_publication'] . ' order by date');
+            $req3 = mysql_query('SELECT * FROM commentaires co join users us on us.id=co.id_auteur where id_publication=' . $valeur['id_publication'] . ' order by date');
 
             echo '<tr>
                 <td>
@@ -101,7 +101,7 @@ require_once('../Modele/cryptModele.php');
 
                         <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:500px;height 50px;" src="' . $valeur['photo'] . '"></p>';
 
-            while ($val = mysql_fetch_assoc($req2)) {
+            while ($val = mysql_fetch_assoc($req3)) {
                 $date_explosee = explode("-", $val['date']);
                 $annee = $date_explosee[0];
                 $mois = $date_explosee[1];
@@ -149,6 +149,7 @@ require_once('../Modele/cryptModele.php');
             </tr>
         <tr><td><br></td></tr>';
         }
+
         ?>
     </table>
 </div>
