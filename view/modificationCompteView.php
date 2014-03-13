@@ -21,7 +21,7 @@ else
 
 
 $connexions = new ConnexionBD();
-    $connexions->connexion();
+$connexions->connexion();
     $req = mysql_query('SELECT * FROM  users where id=' . $_SESSION['id'])
     or die ("Impossible de se connecté à la table album" . mysql_error());
     $valeur = mysql_fetch_assoc($req);
@@ -36,8 +36,6 @@ $date_explosee = explode("-", $_SESSION['naissance']);
 $jour = $date_explosee[2];
 $mois = $date_explosee[1];
 $annee = $date_explosee[0];
-$moisText = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-$mois = $moisText[$mois - 1];
 
 
 
@@ -165,7 +163,10 @@ $mois = $moisText[$mois - 1];
                         </th>
                         <td>
                             <span id="sprytextfield1">
-                                <?php echo $jour . ' ' . $mois . ' ' . $annee ?>
+                                 <input type="text" name="naissance" id="naissance" placeholder="Mail"
+                                        value="<?php echo $jour . '/' . $mois . '/' . $annee ?>"/>
+                                <span class="textfieldRequiredMsg">Non complété</span>
+                                <span class="textfieldInvalidFormatMsg">Try Again...</span>
                             </span>
                         </td>
                     </tr>
@@ -176,7 +177,7 @@ $mois = $moisText[$mois - 1];
                         <td>
                             <span id="sprytextfield2">
                                 <input type="text" name="mail" id="mail" placeholder="Mail"
-                                       value="<?php echo $_SESSION['mail'];; ?>"/>
+                                       value="<?php echo $_SESSION['mail']; ?>"/>
                                 <span class="textfieldRequiredMsg">Non complété</span>
                                 <span class="textfieldInvalidFormatMsg">Try Again...</span>
                             </span>
