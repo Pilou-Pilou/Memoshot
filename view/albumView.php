@@ -49,7 +49,7 @@ require_once('../Config/ConnexionBD.php');
                             $image = $valeur['photo'];
                             $nom = $valeur['nom'];
                             $message= $valeur['message'];
-                            $bouton = '<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\'id=' . $id . ' value=\'Supprimer la photo\' onClick=document.location.href=\'../Controller/Lenomdemapage.php?id=' . $id . '\'; />';
+                            $bouton = '<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\'id=' . $id . ' value=\'Supprimer la photo\' onClick=document.location.href=\'../Controller/supprimerPhotoController.php?id=' . $id . '\'; />';
                             echo '<a title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="200" src="' . $image . '" title="' . $nom . '" /></a>';
                             $compteur++;
                         }
