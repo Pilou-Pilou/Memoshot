@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rulio
- * Date: 21/02/14
- * Time: 14:53
- */
 session_start();
 require_once('../Config/ConnexionBD.php');
 $_SESSION['erreur'] = '';

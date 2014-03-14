@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rulio
- * Date: 21/02/14
- * Time: 17:02
- */
-
 session_start();
 require_once('../Modele/testSessionModele.php');
 require_once('../Config/ConnexionBD.php');
@@ -56,8 +49,8 @@ require_once('../Config/ConnexionBD.php');
                             $image = $valeur['photo'];
                             $nom = $valeur['nom'];
                             $message= $valeur['message'];
-                            $bouton='<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\' id='.$id.' value=\'Supprimer la photo\' />';
-                            echo '<a title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="'. $image .'" backdrop="true" keyboard="true" data-footer="'.$bouton.'" data-title="'. $message .'" > <img height="200" src="'. $image . '" title="'. $nom . '" /></a>';
+                            $bouton = '<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\'id=' . $id . ' value=\'Supprimer la photo\' onClick=document.location.href=\'../Controller/Lenomdemapage.php?id=' . $id . '\'; />';
+                            echo '<a title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="200" src="' . $image . '" title="' . $nom . '" /></a>';
                             $compteur++;
                         }
                         ?>
