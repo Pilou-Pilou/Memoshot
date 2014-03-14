@@ -11,7 +11,7 @@ $montant = $montant * 100;
 $connexions = new ConnexionBD();
 $connexions->connexion();
 $req = mysql_query('SELECT mail FROM `users` WHERE id ="' . $_SESSION['id'] . '"')
-or die ("Impossible de se connecté à la table users " . mysql_error());
+or die ("Impossible de se connecter à la table users " . mysql_error());
 $row = mysql_fetch_array($req);
 
 $customer = Stripe_Customer::create(array(

@@ -29,7 +29,7 @@ require_once('../Modele/testSessionModele.php');
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span></h3><br>
 
-                    <p>Vos avez déjà souscrit pour ce mois ci à un abonnement veuillez revenir le mois prochain.</p>
+                    <p>Vous avez déjà souscrit pour ce mois ci à un abonnement veuillez revenir le mois prochain.</p>
                 </div>
             </td>
         </tr>
