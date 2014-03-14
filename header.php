@@ -43,60 +43,62 @@ if (isset($_POST['recherche'])) {
                             class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
             </ul>
             <form action="" method="post" class="navbar-form navbar-left" autocomplete="off">
-            <div class="form-group">
+                <div class="form-group">
                     <input type="text" name="recherche" id="recherche" class="form-control" placeholder="Search"
                            onkeyup="window.setTimeout('refreshList(pseudo);',1);">
                 </div>
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>&nbspResearch
                 </button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <?php
-                require_once('../Config/ConnexionBD.php');
-                $connexions = new ConnexionBD();
-                $connexions->connexion();
-                $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')
-                or die ("Impossible de se connecter à la table 'amis'" . mysql_error());
-                if (mysql_num_rows($req) == 0) {
-                    echo ' <li class="dropdown">
+            <div id="notifications">
+                <ul class="nav navbar-nav navbar-right">
+                    <?php
+                    require_once('../Config/ConnexionBD.php');
+                    $connexions = new ConnexionBD();
+                    $connexions->connexion();
+                    $req = mysql_query('SELECT * FROM amis am join users us on am.id_amis_1=us.id WHERE id_amis_2 =\'' . $_SESSION['id'] . '\' AND status_amitier=0')
+                    or die ("Impossible de se connecter à la table 'amis'" . mysql_error());
+                    if (mysql_num_rows($req) == 0) {
+                        echo '<li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a>&nbspAucune Notification ...</a></li>
                                     <li class="divider"></li>
                                 </ul>
-                            <div id="notification" class="notification">' . mysql_num_rows($req) . '</div></li>';
-                } else {
-                    echo '<li class="dropdown">
+                            </li>';
+                    } else {
+                        echo '<li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-globe"></span>&nbspNotifications <b class="caret"></b></a>
                                 <ul class="dropdown-menu">';
-                    while ($valeur = mysql_fetch_assoc($req)) {
-                        echo '<li><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '">' . $valeur['pseudo'] . ' vous a demander en amis </a></li>';
-                        echo '<li class="divider"></li>';
-                    }
-                    echo '</ul>
+                        while ($valeur = mysql_fetch_assoc($req)) {
+                            echo '<li><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '">' . $valeur['pseudo'] . ' vous a demander en amis </a></li>';
+                            echo '<li class="divider"></li>';
+                        }
+                        echo '</ul>
                             <div id="notification" class="notification">' . mysql_num_rows($req) . '</div></li>';
-                }
-                ?>
-                <li><a href="../view/ajouterUnePhotoView.php"> <span
-                            class="glyphicon glyphicon-camera"></span>&nbspAjouter une photo</a></li>
-                <li><a href="../view/fermer_session.php"> <span
-                            class="glyphicon glyphicon-log-out"></span>&nbspDéconnexions</a></li>
-                <li><a href="../view/visualisationCompteView.php"> <span
-                            class="glyphicon glyphicon-user"></span>&nbspMon
-                        Compte (<?php echo $_SESSION['pseudo_util']; ?>)</a></li>
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../view/modificationCompteView.php">Modification
-                                Compte</a></li>
-                        <li class="divider"></li>
-                        <li><a href="../view/abonnementView.php">Abonnement</a></li>
-                    </ul>
-                </li>
-            </ul>
+                    }
+                    ?>
+                    <li><a href="../view/ajouterUnePhotoView.php"> <span
+                                class="glyphicon glyphicon-camera"></span>&nbspAjouter une photo</a></li>
+                    <li><a href="../view/fermer_session.php"> <span
+                                class="glyphicon glyphicon-log-out"></span>&nbspDéconnexions</a></li>
+                    <li><a href="../view/visualisationCompteView.php"> <span
+                                class="glyphicon glyphicon-user"></span>&nbspMon
+                            Compte (<?php echo $_SESSION['pseudo_util']; ?>)</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-cog"></span>&nbspSettings <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../view/modificationCompteView.php">Modification
+                                    Compte</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../view/abonnementView.php">Abonnement</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -218,5 +220,21 @@ while ($valeur = mysql_fetch_assoc($req1)) {
         document.getElementById('liste').style.display = 'none';
         document.getElementById('recherche').focus();
     }
+
+</script>
+<script type="text/JavaScript" src="../js/prototype.js"></script>
+<script language="javascript">
+
+
+    window.onload = auto_refresh;
+    function auto_refresh() {
+        new Ajax.Updater('notifications', '../Modele/miseAJourNotification.php', {parameters: 'mode=auto_refresh', evalScripts: true, asynchronous: true})
+        new Ajax.Updater('colonnedroite', '../Modele/miseAJourPub.php', {parameters: 'mode=auto_refresh', evalScripts: true, asynchronous: true})
+
+        setTimeout("auto_refresh()", 5000);
+
+        return true
+    }
+
 
 </script>

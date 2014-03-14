@@ -13,7 +13,7 @@ $_SESSION['erreur'] = '';
 if (isset($_POST['pseudo'])) {
 
     // on à verifier que tous les champs n'etait pas vide on va maintenant
-    if (estVide($_POST['pseudo']) && estVide($_POST['password']) && estVide($_POST['passwordVerif']) && estVide($_POST['nom']) && estVide($_POST['prenom']) && estVide($_POST['mail']))
+    if (estVide($_POST['naissance']) && estVide($_POST['pseudo']) && estVide($_POST['password']) && estVide($_POST['passwordVerif']) && estVide($_POST['nom']) && estVide($_POST['prenom']) && estVide($_POST['mail']))
         $_SESSION['erreur'] = ' Veuillez bien complétez tous les champs' . '<br>';
 
     // verifier si les mot de passe sont bon
@@ -37,22 +37,12 @@ if (isset($_POST['pseudo'])) {
         $_POST['mail'] = '';
     }
 
-
-    echo '<form method="post" name="donnee" action="../view/modificationCompteView.php">
-                <input type="hidden" name="pseudo" value="' . $_POST['pseudo'] . '">
-                <input type="hidden" name="nom" value="' . $_POST['nom'] . '">
-                <input type="hidden" name="prenom" value="' . $_POST['prenom'] . '">
-                <input type="hidden" name="mail" value="' . $_POST['mail'] . '">
-                <input type="hidden" name="sexe" value="' . $_POST['sexe'] . '">
-          </form>';
-
-
     if ($_SESSION['erreur'] == '') {
         $_SESSION['erreur'] = -1;
-        miseajourDonnees($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['mail'], $_POST['sexe']);
+        miseajourDonnees($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['mail'], $_POST['sexe'], $_POST['naissance']);
         header('Location: ../view/visualisationCompteView.php');
     } else
-        echo '<SCRIPT type="text/javascript">donnee.submit();</SCRIPT>';
+        header('Location: ../view/visualisationCompteView.php');
 
 } else {
     header('Location: ../view/modificationCompteView.php');
@@ -60,11 +50,11 @@ if (isset($_POST['pseudo'])) {
 
 
 // function qui insert une personne dans la base
-function  miseajourDonnees($pseudo, $nom, $prenom, $password, $mail, $sexe)
+function  miseajourDonnees($pseudo, $nom, $prenom, $password, $mail, $sexe, $naissance)
 {
     $connexions = new ConnexionBD();
     $connexions->connexion();
-    mysql_query('UPDATE users set pseudo=\'' . $pseudo . '\',nom=\'' . $nom . '\',prenom=\'' . $prenom . '\',password=SHA1(\'' . $password . '\'),mail=\'' . $mail . '\',sexe=\'' . $sexe . '\' where id=\'' . $_SESSION['id'] . '\' ')
+    mysql_query('UPDATE users set pseudo=\'' . $pseudo . '\',naissance=STR_TO_DATE(\'' . $naissance . '\',\'%d/%m/%Y\'),nom=\'' . $nom . '\',prenom=\'' . $prenom . '\',password=SHA1(\'' . $password . '\'),mail=\'' . $mail . '\',sexe=\'' . $sexe . '\' where id=\'' . $_SESSION['id'] . '\' ')
     or die ("Impossible de se connecté à la table users" . mysql_error());
 }
 
