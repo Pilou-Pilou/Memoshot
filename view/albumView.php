@@ -15,11 +15,13 @@ require_once('../Config/ConnexionBD.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>MemoShot - <?php echo $_SESSION['pseudo_util']; ?></title>
+<title>MemoShot - Album de <?php echo $_SESSION['pseudo_util']; ?> </title>
     <link href="../css/bootstrapbis.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/bootstrap-lightbox/bootstrap-lightbox.min.css">
     <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/bootstrap.css"/>
 </head>
 
 <body style="background-color: #43A1CF ">
@@ -39,7 +41,7 @@ require_once('../Config/ConnexionBD.php');
         <p>&nbsp;</p>
 
         <div class="polaroid-images">
-<<<<<<< .merge_file_VuxVHR
+
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
                     <div class="row">
@@ -50,32 +52,18 @@ require_once('../Config/ConnexionBD.php');
                         $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['profile'] . '\'')
                         or die ("Impossible de se connecté à la table album" . mysql_error());
                         while ($valeur = mysql_fetch_assoc($req)) {
+                            $id = $valeur['id_publication'];
                             $image = $valeur['photo'];
                             $nom = $valeur['nom'];
-
-                            echo "<a title='" . $nom . "' data-toggle='lightbox' data-gallery='multiimages' href='" . $image . "' backdrop='true' keyboard='true' data-footer='Le bouton de suppression sera ici' data-title='" . $nom . "'><img height='200' src='" . $image . "' title='" . $nom . "' /></a>";
+                            $message= $valeur['message'];
+                            $bouton='<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\' id='.$id.' value=\'Supprimer la photo\' />';
+                            echo '<a title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="'. $image .'" backdrop="true" keyboard="true" data-footer="'.$bouton.'" data-title="'. $message .'" > <img height="200" src="'. $image . '" title="'. $nom . '" /></a>';
                             $compteur++;
                         }
                         ?>
                     </div>
                 </div>
             </div>
-
-=======
-            <?php
-            $compteur = 1;
-            $connexions = new ConnexionBD();
-            $connexions->connexion();
-            $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['profile'] . '\'')
-            or die ("Impossible de se connecté à la table album" . mysql_error());
-            while ($valeur = mysql_fetch_assoc($req)) {
-                $image = $valeur['photo'];
-                $nom = $valeur['nom'];
-                echo '<a href="" title="' . $nom . '"><img height="200" src="' . $image . '" alt="Cave" title="Cave"/></a>';
-                $compteur++;
-            }
-            ?>
->>>>>>> .merge_file_f22tZR
         </div>
 
         <?php
@@ -103,23 +91,6 @@ require_once('../Config/ConnexionBD.php');
             });
         </script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-            ga('create', 'UA-43208246-2', 'ashleydw.github.io');
-            ga('send', 'pageview');
-        </script>
 
     </div>
     <div class="footer">
