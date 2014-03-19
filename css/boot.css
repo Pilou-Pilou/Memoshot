@@ -29,7 +29,7 @@ audio:not([controls]) {
     height: 0
 }
 
-[hidden], template {
+[hidden] {
     display: none
 }
 
@@ -2426,8 +2426,8 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
 @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url(../fonts/glyphicons-halflings-regular.eot);
-    src: url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(../fonts/glyphicons-halflings-regular.woff) format('woff'), url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'), url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
+    src: url(http://netdna.bootstrapcdn.com/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot);
+    src: url(http://netdna.bootstrapcdn.com/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(http://netdna.bootstrapcdn.com/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff) format('woff'), url(http://netdna.bootstrapcdn.com/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf) format('truetype'), url(http://netdna.bootstrapcdn.com/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
 }
 
 .glyphicon {
@@ -5599,7 +5599,7 @@ button.close {
 @media (min-width: 768px) {
     .modal-dialog {
         width: 600px;
-        margin: 80px auto
+        margin: 100px auto
     }
 
     .modal-content {
@@ -6244,3 +6244,4 @@ button.close {
         display: none !important
     }
 }
+

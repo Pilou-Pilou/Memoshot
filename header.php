@@ -17,7 +17,7 @@ if (isset($_POST['recherche'])) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/boot.css">
     <script src="../js/bootstrap.js"></script>
     <?php require_once('../Config/ConnexionBD.php'); ?>
 </head>

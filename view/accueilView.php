@@ -175,7 +175,7 @@ require_once('../Modele/cryptModele.php');
     </table>
 </div>
 <div id="colonnedroite">
-    <h2 align="center"><b>Publication Mise en Avant</b></h2>
+    <h2 style="font-size:150%;" align="center"><b>Publication Mise en Avant</b></h2>
     <?php  $req2 = mysql_query('(SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
                                 (
                                 select id_utilisateur from ordre_utilisateur where position=1
@@ -214,8 +214,8 @@ require_once('../Modele/cryptModele.php');
         $date_explosee = explode(":", $date_explosee[1]);
         $heure = $date_explosee[0];
         $minute = $date_explosee[1];
-        echo '<p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<p style="position:fixed;margin-left:75px;margin-top:-65px;"><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette <br>publication le
-                        ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '</p>';
+        echo '<p ><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a><p style=" font-size:60%; width: 10%; position:fixed;margin-left:70px;margin-top:-60px;"><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette <br>publication le
+                        ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '</p><p style="font-size:80%" align="center">' . $valeur['message'] . '</p></p>';
         echo '<p align="center"><img style="height:120px;width:120px;z-index:10000" src="' . $valeur['photo'] . '"><p><br>';
     }
     ?>

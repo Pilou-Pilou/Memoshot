@@ -5,20 +5,20 @@ require_once('../Config/ConnexionBD.php');
 $connexions = new ConnexionBD();
 $connexions->connexion();
 $moisText = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-echo '<h2 align="center"><b>Publication Mise en Avant</b></h2>';
+echo '<h2 style="font-size:150%;" align="center"><b>Publication Mise en Avant</b></h2>';
 $req2 = mysql_query('(SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
-                                (
-                                select id_utilisateur from ordre_utilisateur where position=1
+(
+    select id_utilisateur from ordre_utilisateur where position=1
                                 ) limit 1)
                                 union
                                 (SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
-                                (
-                                select id_utilisateur from ordre_utilisateur where position=2
+(
+    select id_utilisateur from ordre_utilisateur where position=2
                                 ) limit 1)
                                 union
                                 (SELECT * FROM album al join users us on us.id=al.id_utilisateur where al.id_utilisateur in
-                                (
-                                select id_utilisateur from ordre_utilisateur where position=3
+(
+    select id_utilisateur from ordre_utilisateur where position=3
                                 )limit 1)
 
                                 ')
@@ -34,6 +34,7 @@ mysql_query('update users set abonnement=0 where abonnement not in (select id_ab
 mysql_query('delete from ordre_utilisateur where id_utilisateur in (select id from users where abonnement in (select id_abonnement from abonnement where id_abonnement<>0 and DATEDIFF(CURDATE(),date_debut_abonnement)>=30))');
 mysql_query('delete FROM ordre_utilisateur WHERE id_utilisateur is null or id_utilisateur in (select id from users where abonnement = 0)');
 
+
 while ($valeur = mysql_fetch_assoc($req2)) {
     $date_explosee = explode("-", $valeur['date']);
     $annee = $date_explosee[0];
@@ -43,7 +44,7 @@ while ($valeur = mysql_fetch_assoc($req2)) {
     $date_explosee = explode(":", $date_explosee[1]);
     $heure = $date_explosee[0];
     $minute = $date_explosee[1];
-    echo '<p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<p style="position:fixed;margin-left:75px;margin-top:-65px;"><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette <br>publication le
-                        ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '</p>';
+    echo '<p ><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a><p style=" font-size:60%; width: 10%; position:fixed;margin-left:70px;margin-top:-60px;"><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette <br>publication le
+                        ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '</p><p style="font-size:80%" align="center">' . $valeur['message'] . '</p></p>';
     echo '<p align="center"><img style="height:120px;width:120px;z-index:10000" src="' . $valeur['photo'] . '"><p><br>';
 }

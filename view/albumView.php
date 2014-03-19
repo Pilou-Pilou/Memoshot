@@ -8,13 +8,14 @@ require_once('../Config/ConnexionBD.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>MemoShot - Album de <?php echo $_SESSION['pseudo_util']; ?> </title>
+    <title>MemoShot - Album de <?php echo $_SESSION['pseudo_util']; ?> </title>
     <link href="../css/bootstrapbis.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/bootstrap-lightbox/bootstrap-lightbox.min.css">
     <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/bootstrap.css"/>
+
 </head>
 
 <body style="background-color: #43A1CF ">
@@ -48,9 +49,9 @@ require_once('../Config/ConnexionBD.php');
                             $id = $valeur['id_publication'];
                             $image = $valeur['photo'];
                             $nom = $valeur['nom'];
-                            $message= $valeur['message'];
+                            $message = $valeur['message'];
                             $bouton = '<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\'id=' . $id . ' value=\'Supprimer la photo\' onClick=document.location.href=\'../Controller/supprimerPhotoController.php?id=' . $id . '\'; />';
-                            echo '<a title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="200" src="' . $image . '" title="' . $nom . '" /></a>';
+                            echo '<a  title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="10" height="200" src="' . $image . '" title="' . $nom . '" /></a>';
                             $compteur++;
                         }
                         ?>
