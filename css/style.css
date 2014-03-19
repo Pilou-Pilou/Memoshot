@@ -114,7 +114,7 @@ a:hover, a:active, a:focus {
 
 #separation {
     top: 51px;
-    background-color: #d1cece;
+    background-color: #43A1CF;
     position: absolute;
     height: 30px;
     width: 100%;
@@ -135,7 +135,7 @@ a:hover, a:active, a:focus {
     border: 2px rgb(155, 160, 155) solid;
     /* Arrondis de la bordure*/
     border-radius: 10px 10px 10px 10px;
-    background-color: rgb(115, 255, 221);
+    background-color: rgb(233, 233, 233);
     padding: 10px 0
 }
 
@@ -152,7 +152,7 @@ a:hover, a:active, a:focus {
     border: 2px rgb(155, 160, 155) solid;
     /* Arrondis de la bordure*/
     border-radius: 10px 10px 10px 10px;
-    background-color: rgb(115, 255, 221);
+    background-color: rgb(233, 233, 233);
     padding: 10px 0
 }
 
@@ -162,7 +162,7 @@ a:hover, a:active, a:focus {
     top: 81px;
     position: absolute;
     left: 20%;
-    background-color: #d1cece;
+    background-color: #43A1CF;
     width: 60%;
     overflow: hidden;
 }
@@ -189,6 +189,11 @@ a:hover, a:active, a:focus {
 
 a.cancel:hover {
     color: #d12228;
+    cursor: pointer;
+}
+
+p.like:hover {
+    color: #7cd16d;
     cursor: pointer;
 }
 
