@@ -92,7 +92,7 @@ function mailEnvoi($mail, $id)
                         <pre>
                         &nbsp;</pre>
 
-                        <p style="text-align: center;"><span style="font-family:courier new,courier,monospace">F&eacute;licitation vous venez de vous inscrire sur notre site memoshot.<br />
+                        <p style="text-align: center;"><span style="font-family:courier new,courier,monospace">Félicitations vous venez de vous inscrire sur notre site memoshot.<br />
                         Pour finaliser cette inscription cliquez sur le lien ci dessous :</span></p>
 
                         <p style="text-align: center;"><a href="http://205.236.12.51/projet/h2014/equipe3/view/validationCompteView?id=' . $id . '">Valider votre inscription</a><br />
