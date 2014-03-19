@@ -226,12 +226,12 @@ while ($valeur = mysql_fetch_assoc($req1)) {
 <script language="javascript">
 
 
-    window.onload = auto_refresh;
+    setTimeout("auto_refresh()", 10000);
     function auto_refresh() {
         new Ajax.Updater('notifications', '../Modele/miseAJourNotification.php', {parameters: 'mode=auto_refresh', evalScripts: true, asynchronous: true})
         new Ajax.Updater('colonnedroite', '../Modele/miseAJourPub.php', {parameters: 'mode=auto_refresh', evalScripts: true, asynchronous: true})
 
-        setTimeout("auto_refresh()", 5000);
+        setTimeout("auto_refresh()", 10000);
 
         return true
     }
