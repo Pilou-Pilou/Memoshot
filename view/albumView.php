@@ -2,6 +2,17 @@
 session_start();
 require_once('../Modele/testSessionModele.php');
 require_once('../Config/ConnexionBD.php');
+$connexions = new ConnexionBD();
+$connexions->connexion();
+$req = mysql_query('SELECT * FROM users  where id=\'' . $_SESSION['profile'] . '\'')
+or die ("Impossible de se connecté à la table album" . mysql_error());
+while ($valeur = mysql_fetch_assoc($req)) {
+    $_SESSION['pseudo_album'] = $valeur['pseudo'];
+}
+
+
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,10 +36,10 @@ require_once('../Config/ConnexionBD.php');
     ?>
 </div>
 
-<div class="container" style="margin-bottom:2%;margin-top:8%;background-color: #43A1CF ">
+<div class="container" style="margin-bottom:1%;margin-top:8%;background-color: #43A1CF ">
 
     <div class="content">
-        <h1 align="center">Album Photo de <?php echo $_SESSION['pseudo_util']; ?></h1>
+        <h1 align="center">Album Photo de <?php echo $_SESSION['pseudo_album']; ?></h1>
 
         <p>&nbsp;</p>
 
@@ -36,13 +47,10 @@ require_once('../Config/ConnexionBD.php');
 
         <div class="polaroid-images">
 
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <div class="row">
-                        <?php
+            <div class="row" style="magin-right:5%;margin-left: 5%;">
+
+                <?php
                         $compteur = 1;
-                        $connexions = new ConnexionBD();
-                        $connexions->connexion();
                         $req = mysql_query('SELECT * FROM album  where id_utilisateur=\'' . $_SESSION['profile'] . '\'')
                         or die ("Impossible de se connecté à la table album" . mysql_error());
                         while ($valeur = mysql_fetch_assoc($req)) {
@@ -51,18 +59,17 @@ require_once('../Config/ConnexionBD.php');
                             $nom = $valeur['nom'];
                             $message = $valeur['message'];
                             $bouton = '<input class=\'btn btn-danger\' type=\'button\' name=\'Supprimer\'id=' . $id . ' value=\'Supprimer la photo\' onClick=document.location.href=\'../Controller/supprimerPhotoController.php?id=' . $id . '\'; />';
-                            echo '<a  title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="10" height="200" src="' . $image . '" title="' . $nom . '" /></a>';
+                            echo '<a   style=" outline: none;" height="10" title="' . $nom . '" data-toggle="lightbox" data-gallery="multiimages" href="' . $image . '" backdrop="true" keyboard="true" data-footer="' . $bouton . ' " data-title="' . $message . '" > <img height="200" src="' . $image . '" title="' . $nom . '" /></a>';
                             $compteur++;
                         }
                         ?>
-                    </div>
-                </div>
+
             </div>
         </div>
 
         <?php
 
-        for ($i = 0; $i < 4.5 * $compteur; $i++) {
+        for ($i = 0; $i < 0.5 * $compteur; $i++) {
             echo '<p>&nbsp;</p>';
         }
         ?>
