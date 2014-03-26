@@ -84,9 +84,11 @@
                 <p>&nbsp;</p>
 
                 <p align="center">
-                    <input class="btn btn-primary" name="Connexion" id="Connexion" type="submit" value="Valider"/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="btn btn-primary" type="button" name="CreerCompte" id="CreerCompte"
+                    <input style="width: 150px" class="btn btn-success" name="Connexion" id="Connexion" type="submit"
+                           value="Valider"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 150px" class="btn btn-primary" type="button" name="CreerCompte"
+                           id="CreerCompte"
                            value="Creer un Compte" onClick="location.href='view/creationCompteView.php'"/>
                 </p>
 

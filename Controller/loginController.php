@@ -40,4 +40,4 @@ if (mysql_num_rows($req) == 1) {
 
 // fermeture de la connexions
 $connexions->deconnexion();
-
+?>

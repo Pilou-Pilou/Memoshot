@@ -15,6 +15,16 @@ require_once('../Modele/cryptModele.php');
 </head>
 <body style="background-color: #43A1CF ">
 
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 <div style="height: 10%">
     <?php
     require_once('../header.php');
@@ -104,7 +114,7 @@ require_once('../Modele/cryptModele.php');
             echo '<tr>
                 <td>
                     <div class="poster">
-                        <p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</a></b> à ajouté cette publication le
+                        <p><a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><img style="margn-left: 200px;height;50px;width: 50px;" src="' . $valeur['photo_profil'] . '"></a>&nbsp&nbsp<a href="../view/visualisationCompteView.php?id=' . $valeur['id'] . '"><b>' . $valeur['pseudo'] . '</b></a> à ajouté cette publication le
                         ' . $jour . ' ' . $moisText[$mois - 1] . ' ' . $annee . ' à ' . $heure . 'H' . $minute . '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' . $valeur['message'] . '
                          Avec @' . $valeur['tag1'];
 
@@ -118,9 +128,16 @@ require_once('../Modele/cryptModele.php');
                 echo ', @' . $valeur['tag5'];
 
 
+            $photo_explosee = explode("/", $valeur['photo']);
+
+            $image = $photo_explosee[2];
+
+            $lien = "http://www.facebook.com/plugins/like.php?href=http://205.236.12.51/projet/h2014/equipe3/upload/" . $image . "&layout=button_count&show_faces=false&width=100&action=like&font&colorscheme=light&height=21";
+
             echo '</p>
 
-                        <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:500px;height 50px;" src="' . $valeur['photo'] . '"></p><p class="like">&nbsp&nbsp&nbsp&nbsp<span  class="glyphicon glyphicon-thumbs-up"></span> J\'aime</p>';
+                        <br><p align="center"><img style="margin-left:20px;margin-top:20px;margin-bottom:20px;margin-right:20px;width:500px;height 50px;" src="' . $valeur['photo'] . '"></p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <iframe src=' . $lien . ' scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe><p></p>';
 
             while ($val = mysql_fetch_assoc($req3)) {
                 $date_explosee = explode("-", $val['date']);

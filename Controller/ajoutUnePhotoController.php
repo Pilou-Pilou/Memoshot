@@ -23,9 +23,10 @@ if ($_SESSION['erreur'] == '') {
     $_SESSION['erreur'] = -1;
     $cheminPhoto = envoiImage($_FILES['photo']['tmp_name'], $_FILES['photo']['name']);
     insertionPhoto($nom, $message, $tag1, $tag2, $tag3, $tag4, $tag5, $cheminPhoto);
+    header('Location: ../view/albumView.php');
+} else {
+    header('Location: ../view/ajouterUnePhotoView.php');
 }
-
-header('Location: ../view/ajouterUnePhotoView.php');
 
 
 function  insertionPhoto($nom, $message, $tag1, $tag2, $tag3, $tag4, $tag5, $photo)
