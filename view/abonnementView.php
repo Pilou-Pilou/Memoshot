@@ -23,7 +23,7 @@ if ($row['abonnement'] != 0) {
     <link href="../css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
 </head>
-<body style="background-color: #d1cece ">
+<body style="background-color: #43A1CF  ">
 <div style="height: 10%">
     <?php
     require_once('../header.php');
